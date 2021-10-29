@@ -1,0 +1,40 @@
+#######################
+# END: initial contents
+#######################
+
+##############################
+# BEGIN: MacOS files to ignore
+##############################
+# FROM https://raw.githubusercontent.com/github/gitignore/master/Global/macOS.gitignore
+
+############################
+# END: MacOS files to ignore
+############################
+
+################################
+# BEGIN: Windows files to ignore
+################################
+# FROM https://raw.githubusercontent.com/github/gitignore/master/Global/Windows.gitignore
+
+##############################
+# END: Windows files to ignore
+##############################
+
+##############################
+# BEGIN: Linux files to ignore
+##############################
+# FROM https://raw.githubusercontent.com/github/gitignore/master/Global/Linux.gitignore
+
+############################
+# END: Linux files to ignore
+############################
+
+# mod directory and files from Rails Neutrino
+mod/*
+mod-*
+mod_app.sh
+
+# NOTE: Comments MUST get their own dedicated lines and cannot be shared with that of the file name.
+
+#POSTGRES#config/database.yml
+#POSTGRES#.env/development/database

@@ -11,6 +11,7 @@ ANNOTATE=`cat tmp/annotate.txt`
 
 TIME_STAMP=`cat tmp/time_stamp.txt`
 APP_NAME=`cat tmp/app_name.txt`
+DIR_APP=$DIR_MAIN/$APP_NAME
 
 UNIT_00=`cat tmp/unit00.txt`
 UNIT_01=`cat tmp/unit01.txt`
@@ -112,3 +113,54 @@ gem install remove_double_blank
 echo '------------------------------'
 echo 'END: installing necessary gems'
 echo '------------------------------'
+
+########################################
+# 01-01: Initial app creation/acqusition
+########################################
+prepare_mod_app () {
+  cp $DIR_MAIN/mod_app.sh $DIR_APP
+  wait
+  cp -R $DIR_MAIN/mod $DIR_APP
+  wait
+}
+
+get_base_app_url () {
+  if [ "$UNIT_01" = 'Y' ]
+  then
+    BASE_APP_URL=`cat base_apps/v0.txt`
+  elif [ "$UNIT_02" = 'Y' ]
+  then
+    BASE_APP_URL=`cat base_apps/v1.txt`
+  elif [ "$UNIT_03" = 'Y' ]
+  then
+    BASE_APP_URL=`cat base_apps/v2.txt`
+  fi
+}
+
+download_base_app () {
+  get_base_app_url
+  git clone "$BASE_APP_URL" "$APP_NAME"
+}
+
+if [ "$UNIT_00" = 'Y' ]
+then
+  # Create new app from scratch
+  echo '--------------------------'
+  echo "BEGIN: rails new $APP_NAME"
+  echo '--------------------------'
+  cd $DIR_MAIN && rails new $APP_NAME
+  echo '------------------------'
+  echo "END: rails new $APP_NAME"
+  echo '------------------------'
+  echo "$TIME_STAMP" > $DIR_APP/config/time_stamp.txt
+  prepare_mod_app
+  cd $DIR_APP && bash mod_app.sh '01-01' $TOGGLE_OUTLINE
+else
+  download_base_app
+
+  # Remove reference to the base repository
+  # Skipping this step means that changes get pushed to the base repository instead of a new one.
+  cd $DIR_APP && git remote remove origin
+
+  prepare_mod_app
+fi
