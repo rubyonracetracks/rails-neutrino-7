@@ -164,3 +164,7 @@ else
 
   prepare_mod_app
 fi
+
+echo '--------------------------'
+echo "cd $DIR_MAIN && rubocop -D"
+cd $DIR_MAIN && rubocop -D
