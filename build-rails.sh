@@ -23,6 +23,9 @@ UNIT_05=`cat tmp/unit05.txt`
 # Get Git credentials
 bash credentials.sh
 
+# Start tracking the time needed to build app
+DATE_START=$(date +%s)
+
 # Display parameters
 echo '----------'
 echo 'Git email:'
@@ -165,9 +168,90 @@ else
   prepare_mod_app
 fi
 
-echo '-------------------'
-echo 'gem install rubocop'
-gem install rubocop
+#########
+# CLEANUP
+#########
+# Remove the mod* files from the new app
+
+echo 'Cleaning up the app'
+rm -rf $DIR_APP/mod
+rm $DIR_APP/mod*
+
+#############################################################################
+# FINAL TESTING (skip if Rails Neutrino is activated in the host environment)
+#############################################################################
+if [ "$HOST_ENV" = 'N' ]
+then
+  echo '---------------------'
+  echo 'yarn install --silent'
+  cd $DIR_APP && yarn install --silent
+
+  echo '----------------------'
+  echo 'bundle install --quiet'
+  cd $DIR_APP && bundle install --quiet
+
+  # Skip the migration until docker/migrate is provided
+  if [ -f $DIR_APP/docker/migrate ]; then
+    echo '---------------------------'
+    echo 'bundle exec rake db:migrate'
+    cd $DIR_APP && bundle exec rake db:migrate
+  fi
+  
+  # Skip the testing until docker/test is provided
+  if [ -f $DIR_APP/docker/test ]; then
+    echo '---------------------'
+    echo 'bundle exec rake test'
+    cd $DIR_APP && bundle exec rake test
+  fi
+
+  # Skip RuboCop until docker/cop-auto is provided
+  if [ -f $DIR_APP/docker/cop-auto ]; then
+    echo '----------------------'
+    echo 'bundle exec rubocop -D'
+    cd $DIR_APP && bundle exec rubocop -D
+  fi
+
+  # Skip Rails Best Practices until docker/rbp is provided
+  if [ -f $DIR_APP/docker/rbp ]; then
+    echo '----------------------------------'
+    echo 'bundle exec rails_best_practices .'
+    cd $DIR_APP && bundle exec rails_best_practices .
+  fi
+
+  # Skip Brakeman until bin/brakeman is provided
+  if [ -f $DIR_APP/bin/brakeman ]; then
+    cd $DIR_APP && bin/brakeman
+  fi
+
+  # Skip bundler-audit until bin/audit is provided
+  if [ -f $DIR_APP/bin/audit ]; then
+    cd $DIR_APP && bin/audit
+  fi
+
+  echo '**********************************'
+  echo 'Your new Rails app has been built!'
+  echo 'Path:'
+  echo "$DIR_APP"
+
+  if [ -f $DIR_APP/docker/build ]; then
+    echo 'From your HOST environment, run the "docker/build" script'
+    echo 'from within the root directory of your new app.'
+  fi
+else
+  echo 'Using the "docker/build" script to test the new app'
+fi
+
+DATE_END=$(date +%s)
+T_SEC=$((DATE_END-DATE_START))
+echo "Time used to build this app:"
+echo "$((T_SEC/60)) minutes and $((T_SEC%60)) seconds"
+
+##########################################
+# RuboCop for Rails Neutrino 6 Source Code
+##########################################
+echo '---------------------------'
+echo 'gem install rubocop --quiet'
+gem install rubocop --quiet
 
 echo '--------------------------'
 echo "cd $DIR_MAIN && rubocop -D"
