@@ -125,8 +125,13 @@ prepare_mod_app () {
 }
 
 get_prev_app () {
-  #
-  wait
+  STAGE_PREV=$((STAGE-1))
+  APP_NAME_PREV="rails$RAILS_VERSION$MODE$STAGE_PREV"
+  DIR_APP_PREV=$DIR_MAIN/$APP_NAME_PREV
+  echo '------------------------'
+  echo 'Copying the previous app'
+  echo "$APP_NAME_PREV"
+  cp -R $DIR_APP_PREV $DIR_APP
 }
 
 if [ "$UNIT_00" = 'Y' ]
@@ -145,6 +150,21 @@ then
 else
   get_prev_app
   prepare_mod_app
+fi
+
+###############
+# DOCKERIZATION
+###############
+if [ "$UNIT_01" = 'Y' ]
+then
+  cd $DIR_APP && bash mod_app.sh '01-02' $TOGGLE_OUTLINE
+  # cd $DIR_APP && bash mod_app.sh '01-03' $TOGGLE_OUTLINE
+  # cd $DIR_APP && bash mod_app.sh '01-04' $TOGGLE_OUTLINE
+  # cd $DIR_APP && bash mod_app.sh '01-05' $TOGGLE_OUTLINE
+  # cd $DIR_APP && bash mod_app.sh '01-06' $TOGGLE_OUTLINE
+  # cd $DIR_APP && bash mod_app.sh '01-07' $TOGGLE_OUTLINE
+  # cd $DIR_APP && bash mod_app.sh '01-08' $TOGGLE_OUTLINE
+  # cd $DIR_APP && bash mod_app.sh '01-09' $TOGGLE_OUTLINE
 fi
 
 #########
