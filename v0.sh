@@ -1,19 +1,24 @@
 #!/bin/bash
 set -e
 
+RAILS_VERSION='6'
+MODE='V'
+STAGE='0'
+APP_NAME="rails$RAILS_VERSION$MODE$STAGE"
+TIME_STAMP=`date -u +%Y%m%d-%H%M%S-%3N`
+
 rm -rf tmp
 mkdir -p tmp
 
-RAILS_VERSION='6'
-MODE='v0'
-echo 'N' > tmp/host_env.txt
-echo 'N' > tmp/annotate.txt
+rm -rf $APP_NAME
 
-DATE=`date -u +%Y%m%d-%H%M%S-%3N`
-APP_NAME="rails$RAILS_VERSION$MODE-$DATE"
-echo "$DATE" > tmp/time_stamp.txt
+echo "$RAILS_VERSION" > tmp/rails_version.txt
+echo "$MODE" > tmp/mode.txt
+echo "$STAGE" > tmp/stage.txt
 echo "$APP_NAME" > tmp/app_name.txt
+echo "$TIME_STAMP" > tmp/time_stamp.txt
 
+echo 'N' > tmp/annotate.txt
 echo 'Y' > tmp/unit00.txt
 echo 'N' > tmp/unit01.txt
 echo 'N' > tmp/unit02.txt

@@ -4,14 +4,14 @@ set -e
 DIR_MAIN=$PWD
 
 # Basic parameters
-BASE_APP_URL='' # Will be updated later if necessary
-
-HOST_ENV=`cat tmp/host_env.txt`
-ANNOTATE=`cat tmp/annotate.txt`
-
-TIME_STAMP=`cat tmp/time_stamp.txt`
+RAILS_VERSION=`cat tmp/rails_version.txt`
+MODE=`cat tmp/mode.txt`
+STAGE=`cat tmp/stage.txt`
 APP_NAME=`cat tmp/app_name.txt`
+TIME_STAMP=`cat tmp/time_stamp.txt`
 DIR_APP=$DIR_MAIN/$APP_NAME
+
+ANNOTATE=`cat tmp/annotate.txt`
 
 UNIT_00=`cat tmp/unit00.txt`
 UNIT_01=`cat tmp/unit01.txt`
@@ -35,21 +35,17 @@ echo '---------'
 echo 'Git name:'
 git config --global user.name
 echo ''
-echo '---------------'
-echo 'Main Directory:'
-echo "$DIR_MAIN"
+echo "Rails Version: $RAILS_VERSION"
+echo "Mode: $MODE"
+echo "Stage: $STAGE"
 echo ''
-echo "Host environment?                     $HOST_ENV"
+echo "App Name: $APP_NAME"
+echo "Time Stamp: $TIME_STAMP"
 echo ''
-echo "Annotating the app?                   $ANNOTATE"
+echo "Main Directory: $DIR_MAIN"
+echo "App Directory: $DIR_APP"
 echo ''
-echo '-----------'
-echo 'Time Stamp:'
-echo "$TIME_STAMP"
-echo ''
-echo '---------'
-echo 'App Name:'
-echo "$APP_NAME"
+echo "App Annotations: $ANNOTATE"
 echo ''
 echo '-----------------'
 echo 'Scope parameters:'
@@ -66,7 +62,7 @@ echo ''
 ####################################################################
 # Activate NVM and RVM if this script was triggered from the host OS
 ####################################################################
-if [ "$HOST_ENV" = 'Y' ]
+if [ "$MODE" = 'H' ]
 then
   export NVM_DIR="/home/`whoami`/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -113,6 +109,7 @@ gem install gemfile_entry
 gem install string_in_file
 gem install replace_quotes
 gem install remove_double_blank
+gem install rubocop
 echo '------------------------------'
 echo 'END: installing necessary gems'
 echo '------------------------------'
@@ -127,22 +124,9 @@ prepare_mod_app () {
   wait
 }
 
-get_base_app_url () {
-  if [ "$UNIT_01" = 'Y' ]
-  then
-    BASE_APP_URL=`cat base_apps/v0.txt`
-  elif [ "$UNIT_02" = 'Y' ]
-  then
-    BASE_APP_URL=`cat base_apps/v1.txt`
-  elif [ "$UNIT_03" = 'Y' ]
-  then
-    BASE_APP_URL=`cat base_apps/v2.txt`
-  fi
-}
-
-download_base_app () {
-  get_base_app_url
-  git clone "$BASE_APP_URL" "$APP_NAME"
+get_prev_app () {
+  #
+  wait
 }
 
 if [ "$UNIT_00" = 'Y' ]
@@ -159,12 +143,7 @@ then
   prepare_mod_app
   cd $DIR_APP && bash mod_app.sh '01-01' $TOGGLE_OUTLINE
 else
-  download_base_app
-
-  # Remove reference to the base repository
-  # Skipping this step means that changes get pushed to the base repository instead of a new one.
-  cd $DIR_APP && git remote remove origin
-
+  get_prev_app
   prepare_mod_app
 fi
 
@@ -180,7 +159,7 @@ rm $DIR_APP/mod*
 #############################################################################
 # FINAL TESTING (skip if Rails Neutrino is activated in the host environment)
 #############################################################################
-if [ "$HOST_ENV" = 'N' ]
+if [ "$MODE" = 'V' ]
 then
   echo '---------------------'
   echo 'yarn install --silent'
@@ -249,9 +228,6 @@ echo "$((T_SEC/60)) minutes and $((T_SEC%60)) seconds"
 ##########################################
 # RuboCop for Rails Neutrino 6 Source Code
 ##########################################
-echo '---------------------------'
-echo 'gem install rubocop --quiet'
-gem install rubocop --quiet
 
 echo '--------------------------'
 echo "cd $DIR_MAIN && rubocop -D"
