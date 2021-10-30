@@ -28,4 +28,4 @@ echo 'N' > tmp/unit05.txt
 echo 'N' > tmp/unit06.txt
 
 mkdir -p log
-bash build-rails.sh 2>&1 | tee log/$APP_NAME.txt
+bash build-rails.sh 2>&1 | tee log/$APP_NAME-$TIME_STAMP.txt
