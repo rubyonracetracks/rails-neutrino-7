@@ -228,11 +228,6 @@ then
     cd $DIR_APP && bin/audit
   fi
 
-  echo '**********************************'
-  echo 'Your new Rails app has been built!'
-  echo 'Path:'
-  echo "$DIR_APP"
-
   if [ -f $DIR_APP/docker/build ]; then
     echo 'From your HOST environment, run the "docker/build" script'
     echo 'from within the root directory of your new app.'
@@ -240,6 +235,11 @@ then
 else
   echo 'Using the "docker/build" script to test the new app'
 fi
+
+echo '**********************************'
+echo 'Your new Rails app has been built!'
+echo 'Path:'
+echo "$DIR_APP"
 
 DATE_END=$(date +%s)
 T_SEC=$((DATE_END-DATE_START))
