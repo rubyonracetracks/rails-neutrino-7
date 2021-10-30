@@ -1,0 +1,50 @@
+#!/bin/bash
+set -e
+
+# BEGIN: PostgreSQL setup
+#POSTGRES exec_pg_setup () {
+  #POSTGRES FILENAME=$1
+  #POSTGRES if [[ ! -f $FILENAME ]]
+  #POSTGRES then
+    #POSTGRES docker/pg_setup_1
+  #POSTGRES fi
+#POSTGRES }
+
+#POSTGRES exec_pg_setup 'config/database.yml'
+#POSTGRES exec_pg_setup '.env-docker/development/database'
+# END: PostgreSQL setup
+
+# BEGIN: Get Ruby version
+cp .ruby-version tmp/.ruby-version-process
+sed -i.bak "s|ruby-||g" tmp/.ruby-version-process
+rm tmp/.ruby-version-process.bak
+RUBY_VERSION_HERE=`cat tmp/.ruby-version-process`
+rm tmp/.ruby-version-process
+# END: Get Ruby version
+
+# Copy Dockerfile-template to Dockerfile
+cp Dockerfile-template Dockerfile
+
+# Fill in the Ruby version in the Dockerfile
+docker/replace_sif 'RUBY_VERSION' "$RUBY_VERSION_HERE" Dockerfile
+
+docker-compose down -v --remove-orphans
+wait
+echo '###########################'
+echo 'BEGIN: docker-compose build'
+echo '###########################'
+docker-compose build # Set up the Docker containers
+wait
+echo '##############################'
+echo 'FINISHED: docker-compose build'
+echo '##############################'
+
+#GEM_INSTALL_BUNDLER docker/gem_install_bundler
+
+#BUNDLE_INSTALL docker/bundle_install
+
+#DATABASE_MIGRATE docker/migrate
+
+#TEST_APP docker/test
+
+# docker/test_code
