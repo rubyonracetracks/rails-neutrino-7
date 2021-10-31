@@ -1,0 +1,4 @@
+
+# The rexml gem is necessary in Ruby 3.  Not having it in the Gemfile leads to the following error message: 
+# LoadError: cannot load such file -- rexml/document
+gem 'rexml'

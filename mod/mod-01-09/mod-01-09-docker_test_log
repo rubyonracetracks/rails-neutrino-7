@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+docker/bundle_install
+docker/migrate
+
+echo '----------------------------'
+echo "BEGIN: bundle exec rake test"
+echo '----------------------------'
+docker/run bundle exec rake test
+echo '--------------------------'
+echo "END: bundle exec rake test"
+echo '--------------------------'
