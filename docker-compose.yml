@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/home/winner/neutrino
+      - bundle_path:/home/winner/bundle
+    user: winner
+
+volumes:
+  bundle_path:

@@ -20,6 +20,13 @@ UNIT_03=`cat tmp/unit03.txt`
 UNIT_04=`cat tmp/unit04.txt`
 UNIT_05=`cat tmp/unit05.txt`
 
+if [ "$MODE" = 'H' ]
+then
+  echo 'Setting Git credentials'
+  git config --global user.email 'docker_user@rubyonractracks.com'
+  git config --global user.name 'Rails Neutrino'
+fi
+
 # Get Git credentials
 bash credentials.sh
 
