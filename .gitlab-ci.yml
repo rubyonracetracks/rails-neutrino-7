@@ -9,4 +9,7 @@ services:
 build_rails_app:
   stage: build
   script:
+    - apk update
+    - apk add bash
+    - apk add docker-compose
     - bash ci.sh
