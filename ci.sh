@@ -6,6 +6,8 @@ MODE='H'
 STAGE='ci'
 APP_NAME="rails$RAILS_VERSION$MODE$STAGE"
 TIME_STAMP=`date -u +%Y%m%d-%H%M%S-%3N`
+DOCKER_IMAGE="image-rails_neutrino_$RAILS_VERSION"
+DOCKER_CONTAINER="container-rails_neutrino_$RAILS_VERSION"
 
 rm -rf tmp
 mkdir -p tmp
@@ -28,6 +30,12 @@ echo 'Y' > tmp/unit04.txt
 echo 'Y' > tmp/unit05.txt
 echo 'Y' > tmp/unit06.txt
 
+bash nukec.sh
 mkdir -p log
-
-bash start-docker.sh 2>&1 | tee log/$APP_NAME.txt
+docker build -t $DOCKER_IMAGE . 2>&1 | tee log/$APP_NAME-$TIME_STAMP-part1.txt
+wait
+docker create --name $DOCKER_CONTAINER $DOCKER_IMAGE
+wait
+docker cp $DOCKER_CONTAINER:/home/winner/neutrino/$APP_NAME $PWD
+wait
+cd $APP_NAME && docker/build | tee log/$APP_NAME-$TIME_STAMP-part2.txt

@@ -8,6 +8,9 @@ services:
 
 build_rails_app:
   stage: build
+  before_script:
+    - apk update
+    - apk add bash
   script:
     - apk update
     - apk add bash
