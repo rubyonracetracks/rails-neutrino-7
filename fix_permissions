@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+# This script ensures that all files in the app within the Docker image are owned by the user winner.
+# This is necessary for the continuous integration setup,
+# where Docker does weird things.
+
+DIR_MAIN='/home/winner/myapp'
+
+# Basic parameters`
+APP_NAME=`cat $DIR_MAIN/tmp/app_name.txt`
+DIR_APP=$DIR_MAIN/$APP_NAME
+
+chown -R winner:winner $DIR_MAIN
+
+su -c $DIR_MAIN/test_app_internal winner
