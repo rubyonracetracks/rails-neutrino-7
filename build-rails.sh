@@ -189,7 +189,7 @@ rm $DIR_APP/mod*
 #############################################################################
 if [ "$MODE" = 'V' ]
 then
-  cd $DIR_MAIN && test_app_internal
+  cd $DIR_MAIN && $DIR_MAIN/test_app_internal
 fi
 
 ################################################
