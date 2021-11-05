@@ -12,7 +12,4 @@ build_rails_app:
     - apk update
     - apk add bash
   script:
-    - apk update
-    - apk add bash
-    - apk add docker-compose
     - bash ci.sh

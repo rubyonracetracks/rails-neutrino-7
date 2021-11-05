@@ -12,6 +12,7 @@ TIME_STAMP=`cat tmp/time_stamp.txt`
 DIR_APP=$DIR_MAIN/$APP_NAME
 
 ANNOTATE=`cat tmp/annotate.txt`
+CONFIG_DOCKERFILE=`cat tmp/config_dockerfile.txt`
 
 UNIT_00=`cat tmp/unit00.txt`
 UNIT_01=`cat tmp/unit01.txt`
@@ -188,58 +189,29 @@ rm $DIR_APP/mod*
 #############################################################################
 if [ "$MODE" = 'V' ]
 then
-  echo '---------------------'
-  echo 'yarn install --silent'
-  cd $DIR_APP && yarn install --silent
+  cd $DIR_MAIN && test_app_internal
+fi
 
-  echo '----------------------'
-  echo 'bundle install --quiet'
-  cd $DIR_APP && bundle install --quiet
+################################################
+# Configure Dockerfile in new app (if specified)
+################################################
+if [ "$CONFIG_DOCKERFILE" = 'Y' ]
+then
+  # BEGIN: Get Ruby version
+  cp $DIR_APP/.ruby-version $DIR_APP/tmp/.ruby-version-process
+  sed -i.bak "s|ruby-||g" $DIR_APP/tmp/.ruby-version-process
+  rm $DIR_APP/tmp/.ruby-version-process.bak
+  RUBY_VERSION_HERE=`cat $DIR_APP/tmp/.ruby-version-process`
+  rm $DIR_APP/tmp/.ruby-version-process
+  # END: Get Ruby version
 
-  # Skip the migration until docker/migrate is provided
-  if [ -f $DIR_APP/docker/migrate ]; then
-    echo '---------------------------'
-    echo 'bundle exec rake db:migrate'
-    cd $DIR_APP && bundle exec rake db:migrate
-  fi
-  
-  # Skip the testing until docker/test is provided
-  if [ -f $DIR_APP/docker/test ]; then
-    echo '---------------------'
-    echo 'bundle exec rake test'
-    cd $DIR_APP && bundle exec rake test
-  fi
+  # Copy Dockerfile-template to Dockerfile
+  cp $DIR_APP/Dockerfile-template $DIR_APP/Dockerfile
 
-  # Skip RuboCop until docker/cop-auto is provided
-  if [ -f $DIR_APP/docker/cop-auto ]; then
-    echo '----------------------'
-    echo 'bundle exec rubocop -D'
-    cd $DIR_APP && bundle exec rubocop -D
-  fi
-
-  # Skip Rails Best Practices until docker/rbp is provided
-  if [ -f $DIR_APP/docker/rbp ]; then
-    echo '----------------------------------'
-    echo 'bundle exec rails_best_practices .'
-    cd $DIR_APP && bundle exec rails_best_practices .
-  fi
-
-  # Skip Brakeman until bin/brakeman is provided
-  if [ -f $DIR_APP/bin/brakeman ]; then
-    cd $DIR_APP && bin/brakeman
-  fi
-
-  # Skip bundler-audit until bin/audit is provided
-  if [ -f $DIR_APP/bin/audit ]; then
-    cd $DIR_APP && bin/audit
-  fi
-
-  if [ -f $DIR_APP/docker/build ]; then
-    echo 'From your HOST environment, run the "docker/build" script'
-    echo 'from within the root directory of your new app.'
-  fi
-else
-  echo 'Using the "docker/build" script to test the new app'
+  # Fill in the Ruby version in the Dockerfile
+  STR1='RUBY_VERSION'
+  STR2="$RUBY_VERSION_HERE"
+  sed -i "s/$STR1/$STR2/g" "$DIR_APP/Dockerfile"
 fi
 
 echo '**********************************'
@@ -252,10 +224,10 @@ T_SEC=$((DATE_END-DATE_START))
 echo "Time used to build this app:"
 echo "$((T_SEC/60)) minutes and $((T_SEC%60)) seconds"
 
-##########################################
-# RuboCop for Rails Neutrino 6 Source Code
-##########################################
+############################################
+# RuboCop for the Rails Neutrino Source Code
+############################################
 
-echo '--------------------------'
-echo "cd $DIR_MAIN && rubocop -D"
+echo '------------------------------------------'
+echo "RuboCop for the Rails Neutrino Source Code"
 cd $DIR_MAIN && rubocop -D
