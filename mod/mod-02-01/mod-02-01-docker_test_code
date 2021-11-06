@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# This script runs the app through code metrics.
+# Violations will not stop the app from passing but will be flagged here.
+
+# docker/cop
+# docker/rbp
+# docker/sandi_meter
+# docker/audit
+# docker/brakeman
+# docker/gemsurance

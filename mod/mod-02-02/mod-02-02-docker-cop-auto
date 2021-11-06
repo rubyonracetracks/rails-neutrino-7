@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+echo '----------------------------------'
+echo 'bundle exec rubocop --auto-correct'
+docker-compose run --rm web bundle exec rubocop --auto-correct
