@@ -1,0 +1,7 @@
+
+# BEGIN: Lint gems
+group :development, :testing do
+  gem 'rubocop' # Checks for violations of the Ruby Style Guide, not recommended for legacy apps
+  gem 'rubocop-rails'
+end
+# END: Lint gems

@@ -175,6 +175,16 @@ then
   cd $DIR_APP && bash mod_app.sh '01-09' $TOGGLE_OUTLINE
 fi
 
+######
+# LINT
+######
+if [ "$UNIT_02" = 'Y' ]
+then
+  cd $DIR_APP && bash mod_app.sh '02-01' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '02-02' $TOGGLE_OUTLINE
+fi
+
+
 #########
 # CLEANUP
 #########
