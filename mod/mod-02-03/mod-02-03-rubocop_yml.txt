@@ -1,0 +1,14 @@
+Style/Documentation:
+  Enabled: false
+
+# BEGIN: AllCops
+AllCops:
+  NewCops: enable
+  Exclude:
+    - bin/*
+    - db/migrate/*
+    - db/schema.rb
+    - mod/**/*
+    - tmp/**/*
+    - vendor/**/*
+# END: AllCops
