@@ -1,6 +1,6 @@
+[![pipeline status](https://gitlab.com/rubyonracetracks/rails_neutrino_6/badges/main/pipeline.svg)](https://gitlab.com/rubyonracetracks/rails_neutrino_6/-/commits/main) 
+
 # Rails Neutrino 6
-
-
 
 ## Getting started
 
