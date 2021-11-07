@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 RAILS_VERSION='6'
 MODE='H'
