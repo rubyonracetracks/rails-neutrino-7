@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+# NOTE: This script is NOT included in docker/test_code or docker/git_check.
+# Sandi Meter may take a long time to run.
+
+docker/run bin/sandi_meter

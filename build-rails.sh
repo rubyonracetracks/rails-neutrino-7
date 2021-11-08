@@ -184,6 +184,7 @@ then
   cd $DIR_APP && bash mod_app.sh '02-02' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '02-03' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '02-04' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '02-05' $TOGGLE_OUTLINE
 fi
 
 
