@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+# Checks the quality of Rails code, not recommended for legacy apps
+echo '----------------------------------'
+echo 'bundle exec rails_best_practices .'
+docker/run bundle exec rails_best_practices .
