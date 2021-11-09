@@ -55,6 +55,13 @@ if [ -f $DIR_APP/bin/audit ]; then
   cd $DIR_APP && bin/audit
 fi
 
+# Skip bundler-outdated until docker/bundle-outdated is provided
+if [ -f $DIR_APP/docker/bundle_outdated ]; then
+  echo '---------------'
+  echo 'bundle outdated'
+  cd $DIR_APP && bundle outdated
+fi
+
 echo '++++++++++++++++++++++++++++++++++++++++++'
 echo 'RuboCop for the Rails Neutrino Source Code'
 echo ''
