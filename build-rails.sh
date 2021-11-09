@@ -193,6 +193,7 @@ fi
 if [ "$UNIT_03" = 'Y' ]
 then
   cd $DIR_APP && bash mod_app.sh '03-01' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '03-02' $TOGGLE_OUTLINE
 fi
 
 #########
