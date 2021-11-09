@@ -187,6 +187,13 @@ then
   cd $DIR_APP && bash mod_app.sh '02-05' $TOGGLE_OUTLINE
 fi
 
+########################
+# VULNERABILITY CHECKING
+########################
+if [ "$UNIT_03" = 'Y' ]
+then
+  cd $DIR_APP && bash mod_app.sh '03-01' $TOGGLE_OUTLINE
+fi
 
 #########
 # CLEANUP
