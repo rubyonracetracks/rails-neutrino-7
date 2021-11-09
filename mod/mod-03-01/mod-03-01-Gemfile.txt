@@ -1,0 +1,8 @@
+
+# BEGIN: vulnerability testing gems
+group :development, :testing do
+  # gem 'brakeman'
+  # gem 'bundler-audit'
+  # gem 'gemsurance'
+end
+# END: vulnerability testing gems
