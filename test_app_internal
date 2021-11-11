@@ -1,71 +1,55 @@
 #!/bin/bash
 set -e
 
-DIR_MAIN=$PWD
-
-# Basic parameters`
-APP_NAME=`cat tmp/app_name.txt`
-DIR_APP=$DIR_MAIN/$APP_NAME
-
-ANNOTATE=`cat tmp/annotate.txt`
-
 echo '---------------------'
 echo 'yarn install --silent'
-cd $DIR_APP && yarn install --silent
+yarn install --silent
 
 echo '----------------------'
 echo 'bundle install --quiet'
-cd $DIR_APP && bundle install --quiet
+bundle install --quiet
 
 # Skip the migration until docker/migrate is provided
-if [ -f $DIR_APP/docker/migrate ]; then
+if [ -f docker/migrate ]; then
   echo '---------------------------'
   echo 'bundle exec rake db:migrate'
-  cd $DIR_APP && bundle exec rake db:migrate
+  bundle exec rake db:migrate
 fi
   
 # Skip the testing until docker/test is provided
-if [ -f $DIR_APP/docker/test ]; then
+if [ -f docker/test ]; then
   echo '---------------------'
   echo 'bundle exec rake test'
-  cd $DIR_APP && bundle exec rake test
+  bundle exec rake test
 fi
 
 # Skip RuboCop until docker/cop-auto is provided
-if [ -f $DIR_APP/docker/cop-auto ]; then
+if [ -f docker/cop-auto ]; then
   echo '----------------------'
   echo 'bundle exec rubocop -D'
-  cd $DIR_APP && bundle exec rubocop -D
+  bundle exec rubocop -D
 fi
 
 # Skip Rails Best Practices until docker/rbp is provided
-if [ -f $DIR_APP/docker/rbp ]; then
+if [ -f docker/rbp ]; then
   echo '----------------------------------'
   echo 'bundle exec rails_best_practices .'
-  cd $DIR_APP && bundle exec rails_best_practices .
+  bundle exec rails_best_practices .
 fi
 
 # Skip Brakeman until bin/brakeman is provided
-if [ -f $DIR_APP/bin/brakeman ]; then
-  cd $DIR_APP && bin/brakeman
+if [ -f bin/brakeman ]; then
+  bin/brakeman
 fi
 
 # Skip bundler-audit until bin/audit is provided
-if [ -f $DIR_APP/bin/audit ]; then
-  cd $DIR_APP && bin/audit
+if [ -f bin/audit ]; then
+  bin/audit
 fi
 
 # Skip bundler-outdated until docker/bundle-outdated is provided
-if [ -f $DIR_APP/docker/bundle_outdated ]; then
+if [ -f docker/bundle_outdated ]; then
   echo '---------------'
   echo 'bundle outdated'
-  cd $DIR_APP && bundle outdated
+  bundle outdated
 fi
-
-echo '++++++++++++++++++++++++++++++++++++++++++'
-echo 'RuboCop for the Rails Neutrino Source Code'
-echo ''
-echo '-------------------------------'
-echo 'gem install rubocop > /dev/null'
-gem install rubocop > /dev/null
-cd $DIR_MAIN && rubocop -D
