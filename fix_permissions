@@ -7,10 +7,6 @@ set -e
 
 DIR_MAIN='/home/winner/myapp'
 
-# Basic parameters`
-APP_NAME=`cat $DIR_MAIN/tmp/app_name.txt`
-DIR_APP=$DIR_MAIN/$APP_NAME
-
 chown -R winner:winner $DIR_MAIN
 
 su -c $DIR_MAIN/test_app_internal winner

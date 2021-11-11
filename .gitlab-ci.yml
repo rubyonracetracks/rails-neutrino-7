@@ -6,10 +6,27 @@ image: docker:stable
 services:
   - docker:dind
 
+stages:
+  - build
+  - test
+
+before_script:
+  - apk update
+  - apk add bash
+
 build_rails_app:
   stage: build
-  before_script:
-    - apk update
-    - apk add bash
+  artifacts:
+    paths:
+      - rails6Hci
+      - tmp
   script:
-    - bash ci.sh
+    - bash ci0.sh
+    - bash ci1.sh
+
+test_rails_app:
+  stage: test
+  dependencies: 
+    - build_rails_app
+  script:
+    - bash ci2.sh
