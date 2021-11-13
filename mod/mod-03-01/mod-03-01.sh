@@ -7,6 +7,7 @@ set -e
 # NOTES:
 # * Note that the gem is commented out in the Gemfile and is uncommented ONLY during the moment it is used.
 # * This provides the benefits WITHOUT adding to the Gemfile.lock dependencies.
+# * Edit config/environments/production.rb to force SSL.  (This issue is flagged by Brakeman.)
 # * WICHTIG/LEGACY: If the Gemfile does not have brakeman, use a setup similar to Rails Neutrino.
 # * WICHTIG/LEGACY: If the Gemfile does have brakeman, there is no need for the bin/brakeman script to edit the Gemfile.
 
