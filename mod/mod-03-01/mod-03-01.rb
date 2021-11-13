@@ -18,3 +18,7 @@ system('chmod +x docker/test_code')
 puts 'Enabling docker/brakeman in docker/git_check'
 StringInFile.replace('# docker/brakeman', 'docker/brakeman', 'docker/git_check')
 system('chmod +x docker/git_check')
+
+puts 'Forcing SSL in config/environments/production.rb'
+puts 'This addresses an issue flagged by Brakeman.'
+StringInFile.replace('# config.force_ssl = true', 'config.force_ssl = true', 'config/environments/production.rb')
