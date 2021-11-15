@@ -1,0 +1,7 @@
+
+# BEGIN: pg section
+# NOTE: This section is automatically updated by the pg_setup_full.sh script
+group :production do
+  gem 'pg'
+end
+# END: pg section

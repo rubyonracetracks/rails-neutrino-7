@@ -1,0 +1,8 @@
+
+# BEGIN: SQLite
+# NOTE: This section is automatically deleted by the pg_setup.rb script
+group :development, :test do
+  gem 'sqlite3'
+end
+# END: SQLite
+
