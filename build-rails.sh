@@ -197,6 +197,16 @@ then
   cd $DIR_APP && bash mod_app.sh '03-03' $TOGGLE_OUTLINE
 fi
 
+########################
+# PRODUCTION ENVIRONMENT
+########################
+if [ "$UNIT_04" = 'Y' ]
+then
+  cd $DIR_APP && bash mod_app.sh '04-01' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '04-02' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '04-03' $TOGGLE_OUTLINE
+fi
+
 #########
 # CLEANUP
 #########

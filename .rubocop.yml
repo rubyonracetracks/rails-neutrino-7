@@ -3,3 +3,5 @@ AllCops:
   Exclude:
     - rails*/**/*
 
+Naming/FileName:
+  Enabled: false
