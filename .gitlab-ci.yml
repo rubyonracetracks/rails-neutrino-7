@@ -18,7 +18,7 @@ build_rails_app:
   stage: build
   artifacts:
     paths:
-      - rails6Hci
+      - rails7Hci
       - tmp
   script:
     - bash ci0.sh
