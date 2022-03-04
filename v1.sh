@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-RAILS_VERSION='6'
+RAILS_VERSION='7'
 MODE='V'
 STAGE='1'
 APP_NAME="rails$RAILS_VERSION$MODE$STAGE"
