@@ -208,6 +208,17 @@ then
 fi
 
 #########
+# TESTING
+#########
+if [ "$UNIT_05" = 'Y' ]
+then
+  cd $DIR_APP && bash mod_app.sh '05-01' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '05-02' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '05-03' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '05-04' $TOGGLE_OUTLINE
+fi
+
+#########
 # CLEANUP
 #########
 # Remove the mod* files from the new app

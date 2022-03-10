@@ -1,0 +1,4 @@
+
+# BEGIN: test coverage
+gem 'simplecov', require: false, group: :test
+# END: test coverage

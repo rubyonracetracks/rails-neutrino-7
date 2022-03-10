@@ -1,0 +1,4 @@
+
+# Minitest
+gem 'minitest', require: false, group: :testing
+gem 'minitest-reporters', require: false, group: :testing # Adds special features to tests
