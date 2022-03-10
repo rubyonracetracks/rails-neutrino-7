@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# This is a slightly longer version of docker/testc.
+
+docker/brakeman
+
+docker/cop
+
+docker/rbp
+
+docker/testc

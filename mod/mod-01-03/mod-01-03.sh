@@ -4,6 +4,7 @@ set -e
 # AGENDA:
 # * Add the docker/build and other scripts needed to build the Docker container and execute commands in it (WICHTIG/LEGACY)
 # * Add the Dockerfile to .gitignore (WICHTIG/LEGACY: except in legacy projects that are already Dockerized)
+# * Add .dockerignore
 
 echo '######################################'
 echo 'Unit 1 Chapter 3: Docker Build Scripts'
@@ -29,6 +30,9 @@ NODE_V2=`echo "$NODE_V1" | tr -d 'v'`
 
 # Fill in the Node version in Dockerfile-template
 docker/replace_sif 'NODE_VERSION_HERE' "$NODE_V2" Dockerfile-template
+
+# Add .dockerignore
+cp .gitignore .dockerignore
 
 git add .
 git commit -m 'Added the docker/build and other scripts needed to build the Docker container and execute commands in it'

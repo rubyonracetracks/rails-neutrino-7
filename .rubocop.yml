@@ -5,3 +5,6 @@ AllCops:
 
 Naming/FileName:
   Enabled: false
+
+Style/Documentation:
+  Enabled: false

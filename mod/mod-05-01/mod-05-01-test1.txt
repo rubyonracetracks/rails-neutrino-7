@@ -1,0 +1,10 @@
+  test 'home page has expected title and heading' do
+    get '/'
+    assert_select 'title', 'Home'
+    assert_select 'h1', 'Home'
+  end
+
+  test 'home page has expected content' do
+    get '/'
+    assert_match 'Welcome to public/index.html!', response.body
+  end

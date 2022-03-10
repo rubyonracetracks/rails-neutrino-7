@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# This is a slightly longer version of testm.sh.
+
+docker/brakeman
+
+docker/cop
+
+docker/rbp
+
+docker/testm

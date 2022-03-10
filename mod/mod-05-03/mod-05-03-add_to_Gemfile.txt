@@ -1,0 +1,7 @@
+
+# BEGIN: Capybara enhancements
+group :test do
+  gem 'capybara-email'
+  gem 'capybara-slow_finder_errors'
+end
+# END: Capybara enhancements

@@ -1,0 +1,13 @@
+# BEGIN: use minitest-reporters
+# NOTE: Minitest Reporters is incompatible with GitLab CI.
+if ENV['GITLAB_CI'].nil?
+  require 'minitest/reporters'
+  require 'rake_rerun_reporter'
+  Minitest::Reporters.use!
+
+  reporter_options = { color: true, slow_count: 5, verbose: false, rerun_prefix: 'rm -f log/test.log && bundle exec' }
+  Minitest::Reporters.use! [Minitest::Reporters::HtmlReporter.new,
+                            Minitest::Reporters::RakeRerunReporter.new(reporter_options)]
+end
+# END: use minitest-reporters
+
