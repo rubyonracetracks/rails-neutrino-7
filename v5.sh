@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-RAILS_VERSION='7'
+RAILS_VERSION=`cat params/rails_version.txt`
 MODE='V'
 STAGE='5'
 APP_NAME="rails$RAILS_VERSION$MODE$STAGE"
@@ -12,7 +12,6 @@ mkdir -p tmp
 
 rm -rf $APP_NAME
 
-echo "$RAILS_VERSION" > tmp/rails_version.txt
 echo "$MODE" > tmp/mode.txt
 echo "$STAGE" > tmp/stage.txt
 echo "$APP_NAME" > tmp/app_name.txt
