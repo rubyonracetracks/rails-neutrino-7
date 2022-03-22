@@ -7,7 +7,7 @@ set -euo pipefail
 
 DIR_MAIN=$PWD
 
-RAILS_VERSION=`cat tmp/rails_version.txt`
+RAILS_VERSION=`cat params/rails_version.txt`
 MODE=`cat tmp/mode.txt`
 STAGE=`cat tmp/stage.txt`
 APP_NAME=`cat tmp/app_name.txt`

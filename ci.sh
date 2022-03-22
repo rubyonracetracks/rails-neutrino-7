@@ -5,7 +5,7 @@
 # as succeeding in spite of errors or failures.
 set -euo pipefail
 
-bash c0.sh
+bash ci0.sh
 source definitions.sh
 bash ci1.sh 2>&1 | tee log/$APP_NAME-$TIME_STAMP-part1.txt
 bash ci2.sh 2>&1 | tee log/$APP_NAME-$TIME_STAMP-part2.txt
