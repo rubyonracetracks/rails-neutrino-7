@@ -5,9 +5,9 @@ set -e
 # * Add the docker/gem_install_bundler script for installing the correct version of Bundler (WICHTIG/LEGACY)
 # * Enable docker/gem_install_bundler in docker/build-log (WICHTIG/LEGACY)
 
-echo '#############################################'
-echo 'Unit 1 Chapter 4: Bundler Installation Script'
-echo '#############################################'
+echo '###########################'
+echo 'Bundler Installation Script'
+echo '###########################'
 
 mv mod-01-04-docker_gem_install_bundler docker/gem_install_bundler
 chmod +x docker/gem_install_bundler

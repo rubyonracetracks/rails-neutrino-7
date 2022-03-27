@@ -4,9 +4,9 @@ set -e
 # AGENDA:
 # * Fix the RuboCop offenses not covered by autocorrect
 
-echo '###########################################'
-echo 'Unit 2 Chapter 3: Other RuboCop Corrections'
-echo '###########################################'
+echo '#########################'
+echo 'Other RuboCop Corrections'
+echo '#########################'
 
 echo 'Adding .rubocop.yml'
 mv mod-02-03-rubocop_yml.txt .rubocop.yml

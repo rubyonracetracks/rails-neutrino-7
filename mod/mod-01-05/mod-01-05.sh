@@ -6,9 +6,9 @@ set -e
 # * Enable docker/bundle_install in docker/build-log (WICHTIG/LEGACY)
 # * Removing docker/gem_install_bundler from docker/build-log (redundant)
 
-echo '#################################################'
-echo 'Unit 1 Chapter 5: Yarn Install and Bundle Install'
-echo '#################################################'
+echo '###############################'
+echo 'Yarn Install and Bundle Install'
+echo '###############################'
 
 mv mod-01-05-docker_bundle_install docker/bundle_install
 chmod +x docker/bundle_install

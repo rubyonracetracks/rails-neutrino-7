@@ -7,9 +7,9 @@ set -e
 # * Activate the testing process in docker/build-log (WICHTIG/LEGACY)
 # * Add the docker/git_check script to run before executing "git add" and "git commit" (WICHTIG/LEGACY)
 
-echo '######################################'
-echo 'Unit 1 Chapter 9: Initial Test Scripts'
-echo '######################################'
+echo '####################'
+echo 'Initial Test Scripts'
+echo '####################'
 
 mv mod-01-09-docker_test docker/test
 chmod +x docker/test

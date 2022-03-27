@@ -4,9 +4,9 @@ set -e
 # AGENDA:
 # * Add the docker/nuke and docker/nukec scripts (WICHTIG/LEGACY)
 
-echo '#######################################'
-echo 'Unit 1 Chapter 2: Docker Nuking Scripts'
-echo '########################################'
+echo '#####################'
+echo 'Docker Nuking Scripts'
+echo '#####################'
 
 mkdir -p docker
 mv mod-01-02-docker_nukec docker/nukec

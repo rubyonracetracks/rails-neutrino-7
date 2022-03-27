@@ -4,9 +4,9 @@ set -e
 # AGENDA:
 # * Add the docker/server and docker/server-log scripts for running the Rails server (WICHTIG/LEGACY)
 
-echo '##############################'
-echo 'Unit 1 Chapter 7: Rails Server'
-echo '##############################'
+echo '############'
+echo 'Rails Server'
+echo '############'
 
 mv mod-01-07-docker_server docker/server
 chmod +x docker/server

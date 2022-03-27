@@ -11,13 +11,9 @@ set -e
 # * WICHTIG/LEGACY: If the Gemfile does not have brakeman, use a setup similar to Rails Neutrino.
 # * WICHTIG/LEGACY: If the Gemfile does have brakeman, there is no need for the bin/brakeman script to edit the Gemfile.
 
-echo '#############################'
-echo 'UNIT 3: VULNERABILITY TESTING'
-echo '#############################'
-
-echo '##########################'
-echo 'Unit 3 Chapter 1: Brakeman'
-echo '##########################'
+echo '########'
+echo 'Brakeman'
+echo '########'
 
 echo 'Adding docker/brakeman'
 mv mod-03-01-docker_brakeman docker/brakeman

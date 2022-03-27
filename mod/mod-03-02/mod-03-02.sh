@@ -11,9 +11,9 @@ set -e
 # * WICHTIG/LEGACY: If the Gemfile does not have bundler-audit, use a setup similar to Rails Neutrino.
 # * WICHTIG/LEGACY: If the Gemfile does have bundler-audit, there is no need for the bin/brakeman script to edit the Gemfile.
 
-echo '###############################'
-echo 'Unit 3 Chapter 2: bundler-audit'
-echo '###############################'
+echo '#############'
+echo 'bundler-audit'
+echo '#############'
 
 echo 'Adding docker/audit'
 mv mod-03-02-docker_audit docker/audit

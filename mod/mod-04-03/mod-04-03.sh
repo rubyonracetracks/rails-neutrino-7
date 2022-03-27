@@ -6,9 +6,9 @@ set -e
 #   far more web traffic.  Do this by updating the config/puma.rb file
 #   and by adding the Procfile and specifying Puma in it.
 
-echo '#####################################################'
-echo 'Unit 4 Chapter 3: Updating the Production Environment'
-echo '#####################################################'
+echo '###################################'
+echo 'Updating the Production Environment'
+echo '###################################'
 
 # WICHTIG/LEGACY/production: update config/puma.rb (if necessary)
 echo 'Updating config/puma.rb'

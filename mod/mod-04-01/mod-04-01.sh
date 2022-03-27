@@ -10,13 +10,9 @@ set -e
 # * In the Gemfile, the sqlite3 gem must NOT be specified for the production environment. 
 #   (You may use it in the development and testing environments.)
 
-echo '##############################'
-echo 'UNIT 4: PRODUCTION ENVIRONMENT'
-echo '##############################'
-
-echo '######################################'
-echo 'Unit 4 Chapter 1: Updating the Gemfile'
-echo '######################################'
+echo '####################'
+echo 'Updating the Gemfile'
+echo '####################'
 
 ruby mod-04-01.rb
 

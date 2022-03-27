@@ -6,9 +6,9 @@ set -e
 # * Add the Dockerfile to .gitignore (WICHTIG/LEGACY: except in legacy projects that are already Dockerized)
 # * Add .dockerignore
 
-echo '######################################'
-echo 'Unit 1 Chapter 3: Docker Build Scripts'
-echo '######################################'
+echo '####################'
+echo 'Docker Build Scripts'
+echo '####################'
 
 mv mod-01-03-Dockerfile-template Dockerfile-template
 mv mod-01-03-docker-compose.yml docker-compose.yml

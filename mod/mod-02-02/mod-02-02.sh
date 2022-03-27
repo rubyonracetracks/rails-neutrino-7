@@ -5,9 +5,9 @@ set -e
 # * Add docker/cop-auto (WICHTIG/LEGACY: if necessary)
 # * Use RuboCop's Autocorrect
 
-echo '#####################################'
-echo 'Unit 2 Chapter 2: RuboCop Autocorrect'
-echo '#####################################'
+echo '###################'
+echo 'RuboCop Autocorrect'
+echo '###################'
 
 echo 'Adding docker/cop-auto'
 mv mod-02-02-docker-cop-auto docker/cop-auto

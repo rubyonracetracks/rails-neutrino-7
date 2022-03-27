@@ -7,9 +7,9 @@ set -e
 # Add simplecov to the Gemfile
 # Set up test/test_helper.rb for SimpleCov
 
-echo '###########################'
-echo 'Unit 5 Chapter 4: SimpleCov'
-echo '###########################'
+echo '#########'
+echo 'SimpleCov'
+echo '#########'
 
 ruby mod-05-04.rb
 
