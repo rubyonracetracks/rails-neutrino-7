@@ -1,9 +1,8 @@
 #!/bin/bash
+set -e
 
-# NOTE: set -o pipefail is needed to ensure that any error or failure causes the whole pipeline to fail.
-# Without this specification, the CI status will provide a false sense of security by showing builds
-# as succeeding in spite of errors or failures.
-set -euo pipefail
+DOCKER_IMAGE_1='image-rails_neutrino_build'
+DOCKER_CONTAINER_1='container-rails_neutrino_build'
 
 # PART 1: BUILDING THE NEW APP
 
@@ -14,9 +13,7 @@ source definitions.sh
 # lead to error messages.
 set +e
 delete_docker_container "$DOCKER_CONTAINER_1"
-delete_docker_container "$DOCKER_CONTAINER_2"
 delete_docker_image "$DOCKER_IMAGE_1"
-delete_docker_image "$DOCKER_IMAGE_2"
 set -e
 
 # Creating the new app and building the Docker image $DOCKER_IMAGE_1

@@ -5,7 +5,11 @@
 # as succeeding in spite of errors or failures.
 set -euo pipefail
 
-bash ci0.sh
+DIR_APP_TEST=$1
+wait
 source definitions.sh
-bash ci1.sh 2>&1 | tee log/$APP_NAME-$TIME_STAMP-part1.txt
-bash ci2.sh 2>&1 | tee log/$APP_NAME-$TIME_STAMP-part2.txt
+rm -rf "$DIR_APP_TEST"
+cp -rp "$APP_NAME" "$DIR_APP_TEST"
+
+# PART 2: TESTING THE NEW APP
+cd "$DIR_APP_TEST" && docker/build
