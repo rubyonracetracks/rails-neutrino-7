@@ -18,15 +18,12 @@ build_rails_app:
   stage: build
   artifacts:
     paths:
-      - rails7Hci
+      - rails_neutrino_app
       - tmp
   script:
-    - bash ci0.sh
-    - bash ci1.sh
+    - bash ci-build.sh
 
-test_rails_app:
+test_rails_sqlite:
   stage: test
-  dependencies: 
-    - build_rails_app
   script:
-    - bash ci2.sh
+    - bash ci-test.sh 'rails_neutrino_test_sqlite'

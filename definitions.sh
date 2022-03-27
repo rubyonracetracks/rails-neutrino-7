@@ -12,13 +12,6 @@ MODE=`cat tmp/mode.txt`
 STAGE=`cat tmp/stage.txt`
 APP_NAME=`cat tmp/app_name.txt`
 DIR_APP=$DIR_MAIN/$APP_NAME
-TIME_STAMP=`cat tmp/time_stamp.txt`
-
-DOCKER_IMAGE_1=`cat tmp/docker_image_1.txt`
-DOCKER_IMAGE_2=`cat tmp/docker_image_2.txt`
-DOCKER_IMAGE_3=`cat tmp/docker_image_3.txt`
-DOCKER_CONTAINER_1=`cat tmp/docker_container_1.txt`
-DOCKER_CONTAINER_2=`cat tmp/docker_container_2.txt`
 
 ANNOTATE=`cat tmp/annotate.txt`
 CONFIG_DOCKERFILE=`cat tmp/config_dockerfile.txt`
