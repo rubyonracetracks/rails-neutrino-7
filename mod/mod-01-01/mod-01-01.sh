@@ -9,13 +9,9 @@ set -e
 # * NOTE: config/time_stamp.txt was added prior to the
 #   execution of this script.
 
-echo '###################'
-echo 'UNIT 1: BASIC SETUP'
-echo '###################'
-
-echo '###########################'
-echo 'Unit 1 Chapter 1: GITIGNORE'
-echo '###########################'
+echo '#########'
+echo 'GITIGNORE'
+echo '#########'
 
 ruby mod-01-01.rb
 

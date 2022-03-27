@@ -12,14 +12,9 @@ set -e
 # * Update .gitignore
 # * Added first integration test and public/index.html
 
-
 echo '##################'
-echo 'UNIT 5: TEST SETUP'
+echo 'Minitest Reporters'
 echo '##################'
-
-echo '####################################'
-echo 'Unit 5 Chapter 1: Minitest Reporters'
-echo '####################################'
 
 ruby mod-05-01.rb
 

@@ -8,9 +8,9 @@ set -e
 # Set up test/test_helper.rb for Capybara
 # Add additional integration tests and make them pass
 
-echo '##########################'
-echo 'Unit 5 Chapter 3: Capybara'
-echo '##########################'
+echo '########'
+echo 'Capybara'
+echo '########'
 
 ruby mod-05-03.rb
 

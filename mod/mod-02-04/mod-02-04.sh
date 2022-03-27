@@ -8,9 +8,9 @@ set -e
 # * Update docker/git_check (WICHTIG/LEGACY: if necessary)
 # * Generate the initial config/rails_best_practices.yml. (WICHTIG/LEGACY: if necessary)
 
-echo '######################################'
-echo 'Unit 2 Chapter 4: Rails Best Practices'
-echo '######################################'
+echo '####################'
+echo 'Rails Best Practices'
+echo '####################'
 
 mv mod-02-04-docker_rbp docker/rbp
 chmod +x docker/rbp

@@ -8,9 +8,9 @@ set -e
 # AGENDA
 # * Add testh.sh, testhl.sh, testm.sh, testml.sh, testc.sh, and testcl.sh.
 
-echo '#######################################'
-echo 'Unit 5 Chapter 2: Quick Testing Scripts'
-echo '#######################################'
+echo '#####################'
+echo 'Quick Testing Scripts'
+echo '#####################'
 
 # WICHTIG/LEGACY/bash: add testh.sh, testm.sh, and testc.sh
 

@@ -165,6 +165,9 @@ fi
 ###############
 if [ "$UNIT_01" = 'Y' ]
 then
+  echo '###################'
+  echo 'UNIT 1: BASIC SETUP'
+  echo '###################'
   cd $DIR_APP && bash mod_app.sh '01-02' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '01-03' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '01-04' $TOGGLE_OUTLINE
@@ -180,6 +183,9 @@ fi
 ######
 if [ "$UNIT_02" = 'Y' ]
 then
+  echo '############'
+  echo 'UNIT 2: LINT'
+  echo '############'
   cd $DIR_APP && bash mod_app.sh '02-01' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '02-02' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '02-03' $TOGGLE_OUTLINE
@@ -192,6 +198,9 @@ fi
 ########################
 if [ "$UNIT_03" = 'Y' ]
 then
+  echo '#############################'
+  echo 'UNIT 3: VULNERABILITY TESTING'
+  echo '#############################'
   cd $DIR_APP && bash mod_app.sh '03-01' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '03-02' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '03-03' $TOGGLE_OUTLINE
@@ -202,6 +211,9 @@ fi
 ########################
 if [ "$UNIT_04" = 'Y' ]
 then
+  echo '##############################'
+  echo 'UNIT 4: PRODUCTION ENVIRONMENT'
+  echo '##############################'
   cd $DIR_APP && bash mod_app.sh '04-01' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '04-02' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '04-03' $TOGGLE_OUTLINE
@@ -212,6 +224,9 @@ fi
 #########
 if [ "$UNIT_05" = 'Y' ]
 then
+  echo '##################'
+  echo 'UNIT 5: TEST SETUP'
+  echo '##################'
   cd $DIR_APP && bash mod_app.sh '05-01' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '05-02' $TOGGLE_OUTLINE
   cd $DIR_APP && bash mod_app.sh '05-03' $TOGGLE_OUTLINE
