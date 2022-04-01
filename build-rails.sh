@@ -12,7 +12,6 @@ TIME_STAMP=`cat tmp/time_stamp.txt`
 DIR_APP=$DIR_MAIN/$APP_NAME
 
 ANNOTATE=`cat tmp/annotate.txt`
-CONFIG_DOCKERFILE=`cat tmp/config_dockerfile.txt`
 
 UNIT_00=`cat tmp/unit00.txt`
 UNIT_01=`cat tmp/unit01.txt`
@@ -248,28 +247,6 @@ rm $DIR_APP/mod*
 if [ "$MODE" = 'V' ]
 then
   cd $DIR_APP && $DIR_MAIN/test_app_internal
-fi
-
-################################################
-# Configure Dockerfile in new app (if specified)
-################################################
-if [ "$CONFIG_DOCKERFILE" = 'Y' ]
-then
-  # BEGIN: Get Ruby version
-  cp $DIR_APP/.ruby-version $DIR_APP/tmp/.ruby-version-process
-  sed -i.bak "s|ruby-||g" $DIR_APP/tmp/.ruby-version-process
-  rm $DIR_APP/tmp/.ruby-version-process.bak
-  RUBY_VERSION_HERE=`cat $DIR_APP/tmp/.ruby-version-process`
-  rm $DIR_APP/tmp/.ruby-version-process
-  # END: Get Ruby version
-
-  # Copy Dockerfile-template to Dockerfile
-  cp $DIR_APP/Dockerfile-template $DIR_APP/Dockerfile
-
-  # Fill in the Ruby version in the Dockerfile
-  STR1='RUBY_VERSION'
-  STR2="$RUBY_VERSION_HERE"
-  sed -i "s/$STR1/$STR2/g" "$DIR_APP/Dockerfile"
 fi
 
 echo '**********************************'
