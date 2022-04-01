@@ -14,7 +14,6 @@ APP_NAME=`cat tmp/app_name.txt`
 DIR_APP=$DIR_MAIN/$APP_NAME
 
 ANNOTATE=`cat tmp/annotate.txt`
-CONFIG_DOCKERFILE=`cat tmp/config_dockerfile.txt`
 
 UNIT_00=`cat tmp/unit00.txt`
 UNIT_01=`cat tmp/unit01.txt`

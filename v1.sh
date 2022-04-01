@@ -18,7 +18,6 @@ echo "$APP_NAME" > tmp/app_name.txt
 echo "$TIME_STAMP" > tmp/time_stamp.txt
 
 echo 'N' > tmp/annotate.txt
-echo 'N' > tmp/config_dockerfile.txt
 
 echo 'N' > tmp/unit00.txt
 echo 'Y' > tmp/unit01.txt
