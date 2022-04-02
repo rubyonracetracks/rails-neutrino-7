@@ -3,7 +3,6 @@
 # NOTE: This script is executed from the new app's root directory
   
 CHAPTER=$1
-TOGGLE_OUTLINE=$2
 
 echo '**************'
 echo "BEGIN $CHAPTER"
@@ -13,7 +12,7 @@ DATE1=$(date +%s)
 
 cp mod/mod-$CHAPTER/* $PWD
 SCRIPT="mod-$CHAPTER.sh"
-bash $SCRIPT $TOGGLE_OUTLINE
+bash $SCRIPT
 rm mod-$CHAPTER*
 
 DATE2=$(date +%s)

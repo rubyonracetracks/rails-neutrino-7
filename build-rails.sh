@@ -153,7 +153,7 @@ then
   echo '------------------------'
   echo "$TIME_STAMP" > $DIR_APP/config/time_stamp.txt
   prepare_mod_app
-  cd $DIR_APP && bash mod_app.sh '01-01' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '01-01'
 else
   get_prev_app
   prepare_mod_app
@@ -167,14 +167,14 @@ then
   echo '###################'
   echo 'UNIT 1: BASIC SETUP'
   echo '###################'
-  cd $DIR_APP && bash mod_app.sh '01-02' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '01-03' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '01-04' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '01-05' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '01-06' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '01-07' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '01-08' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '01-09' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '01-02'
+  cd $DIR_APP && bash mod_app.sh '01-03'
+  cd $DIR_APP && bash mod_app.sh '01-04'
+  cd $DIR_APP && bash mod_app.sh '01-05'
+  cd $DIR_APP && bash mod_app.sh '01-06'
+  cd $DIR_APP && bash mod_app.sh '01-07'
+  cd $DIR_APP && bash mod_app.sh '01-08'
+  cd $DIR_APP && bash mod_app.sh '01-09'
 fi
 
 ######
@@ -185,11 +185,11 @@ then
   echo '############'
   echo 'UNIT 2: LINT'
   echo '############'
-  cd $DIR_APP && bash mod_app.sh '02-01' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '02-02' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '02-03' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '02-04' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '02-05' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '02-01'
+  cd $DIR_APP && bash mod_app.sh '02-02'
+  cd $DIR_APP && bash mod_app.sh '02-03'
+  cd $DIR_APP && bash mod_app.sh '02-04'
+  cd $DIR_APP && bash mod_app.sh '02-05'
 fi
 
 ########################
@@ -200,9 +200,9 @@ then
   echo '#############################'
   echo 'UNIT 3: VULNERABILITY TESTING'
   echo '#############################'
-  cd $DIR_APP && bash mod_app.sh '03-01' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '03-02' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '03-03' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '03-01'
+  cd $DIR_APP && bash mod_app.sh '03-02'
+  cd $DIR_APP && bash mod_app.sh '03-03'
 fi
 
 ########################
@@ -213,9 +213,9 @@ then
   echo '##############################'
   echo 'UNIT 4: PRODUCTION ENVIRONMENT'
   echo '##############################'
-  cd $DIR_APP && bash mod_app.sh '04-01' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '04-02' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '04-03' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '04-01'
+  cd $DIR_APP && bash mod_app.sh '04-02'
+  cd $DIR_APP && bash mod_app.sh '04-03'
 fi
 
 #########
@@ -226,10 +226,10 @@ then
   echo '##################'
   echo 'UNIT 5: TEST SETUP'
   echo '##################'
-  cd $DIR_APP && bash mod_app.sh '05-01' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '05-02' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '05-03' $TOGGLE_OUTLINE
-  cd $DIR_APP && bash mod_app.sh '05-04' $TOGGLE_OUTLINE
+  cd $DIR_APP && bash mod_app.sh '05-01'
+  cd $DIR_APP && bash mod_app.sh '05-02'
+  cd $DIR_APP && bash mod_app.sh '05-03'
+  cd $DIR_APP && bash mod_app.sh '05-04'
 fi
 
 #########
