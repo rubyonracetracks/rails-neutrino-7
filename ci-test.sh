@@ -32,6 +32,11 @@ $APP_NAME_TEST/docker/replace_sif 'RUBY_VERSION' "$RUBY_VERSION_HERE" $APP_NAME_
 DOCKER_IMAGE_1="image1-$APP_NAME_TEST"
 DOCKER_IMAGE_2="image2-$APP_NAME_TEST"
 DOCKER_CONTAINER_1="container1-$APP_NAME_TEST"
+set +e
+delete_docker_image $DOCKER_IMAGE_1
+delete_docker_image $DOCKER_IMAGE_2
+delete_docker_container $DOCKER_CONTAINER_1
+set -e
 
 # Setting up the new app and building the Docker image $DOCKER_IMAGE_1
 echo '------------------------------------------------------'
