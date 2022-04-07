@@ -3,7 +3,7 @@
 # NOTE: set -o pipefail is needed to ensure that any error or failure causes the whole pipeline to fail.
 # Without this specification, the CI status will provide a false sense of security by showing builds
 # as succeeding in spite of errors or failures.
-set -euo pipefail
+set -eo pipefail
 
 DIR_MAIN=$PWD
 
@@ -11,6 +11,7 @@ RAILS_VERSION=`cat params/rails_version.txt`
 MODE=`cat tmp/mode.txt`
 STAGE=`cat tmp/stage.txt`
 APP_NAME=`cat tmp/app_name.txt`
+TIME_STAMP=`cat tmp/time_stamp.txt`
 DIR_APP=$DIR_MAIN/$APP_NAME
 
 ANNOTATE=`cat tmp/annotate.txt`
