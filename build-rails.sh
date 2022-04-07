@@ -1,24 +1,12 @@
 #!/bin/bash
 set -e
 
+# NOTE: Do NOT use "set -u".  This causes errors in RVM.
+
 DIR_MAIN=$PWD
 
 # Basic parameters
-RAILS_VERSION=`cat params/rails_version.txt`
-MODE=`cat tmp/mode.txt`
-STAGE=`cat tmp/stage.txt`
-APP_NAME=`cat tmp/app_name.txt`
-TIME_STAMP=`cat tmp/time_stamp.txt`
-DIR_APP=$DIR_MAIN/$APP_NAME
-
-ANNOTATE=`cat tmp/annotate.txt`
-
-UNIT_00=`cat tmp/unit00.txt`
-UNIT_01=`cat tmp/unit01.txt`
-UNIT_02=`cat tmp/unit02.txt`
-UNIT_03=`cat tmp/unit03.txt`
-UNIT_04=`cat tmp/unit04.txt`
-UNIT_05=`cat tmp/unit05.txt`
+source definitions.sh
 
 if [ "$MODE" = 'H' ]
 then
@@ -64,6 +52,10 @@ echo ''
 echo "Add Lint?                             $UNIT_02"
 echo ''
 echo "Add vulnerability tests?              $UNIT_03"
+echo ''
+echo "Configure production environment?     $UNIT_04"
+echo ''
+echo "Configure testing environment?        $UNIT_05"
 echo ''
 
 ####################################################################
