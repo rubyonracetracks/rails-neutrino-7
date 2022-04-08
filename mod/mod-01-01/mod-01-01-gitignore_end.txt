@@ -37,4 +37,4 @@ mod_app.sh
 # NOTE: Comments MUST get their own dedicated lines and cannot be shared with that of the file name.
 
 #POSTGRES#config/database.yml
-#POSTGRES#.env/development/database
+#POSTGRES#.env-docker/development/database
