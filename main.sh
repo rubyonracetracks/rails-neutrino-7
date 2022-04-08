@@ -30,10 +30,13 @@ echo 'Y' > tmp/unit05.txt
 echo 'Y' > tmp/unit06.txt
 
 LOG_BUILD="log/main-$TIME_STAMP-build.txt"
-LOG_TEST_SQLITE="log/main-$TIME_STAMP-test.txt"
-bash main-build.sh 2>&1 | tee log/main-$TIME_STAMP-build.txt
-bash main-test.sh 'rails_app_sqlite' 2>&1 | tee log/main-$TIME_STAMP-test.txt
+LOG_TEST_SQLITE="log/main-$TIME_STAMP-test-sqlite.txt"
+LOG_TEST_POSTGRES="log/main-$TIME_STAMP-test-postgres.txt"
+bash main-build.sh 2>&1 | tee "$LOG_BUILD"
+bash main-test.sh 'rails_app_sqlite' 2>&1 | tee "$LOG_TEST_SQLITE"
+bash main-test.sh 'rails_app_postgres' 2>&1 | tee "$LOG_TEST_POSTGRES"
 
 echo 'LOG FILES:'
 echo "$LOG_BUILD"
 echo "$LOG_TEST_SQLITE"
+echo "$LOG_TEST_POSTGRES"

@@ -1,0 +1,90 @@
+#!/bin/bash
+
+DB_ROOT=$1
+DB_USERNAME=$2
+DB_PASSWORD=$3
+
+delete_between_strings_in_file () {
+  STRING1=$1
+  STRING2=$2
+  FILE_TO_UPDATE=$3
+  sed -i -n "/$STRING1/{p; :a; N; /$STRING2/!ba; s/.*\n//}; p" $FILE_TO_UPDATE
+}
+
+echo 'Configure .env-docker/development/database'
+cp .env-docker/development/database-template .env-docker/development/database
+wait
+docker/replace_sif 'POSTGRES_DB_1' $DB_ROOT '.env-docker/development/database'
+docker/replace_sif 'POSTGRES_USER_1' $DB_USERNAME '.env-docker/development/database'
+docker/replace_sif 'POSTGRES_PASSWORD_1' $DB_PASSWORD '.env-docker/development/database'
+
+# Update Dockerfile-template to remove SQLite (no longer needed)
+echo 'Removing SQLite from the Dockerfile-template'
+docker/replace_sif ' sqlite3' '' 'Dockerfile-template'
+
+# Remove "#POSTGRES#" in docker/build-log
+echo 'Updating docker/build-log'
+docker/replace_sif '#POSTGRES#' '' 'docker/build-log'
+
+# Remove "#POSTGRES#" in .gitignore
+echo 'Updating .gitignore'
+docker/replace_sif '#POSTGRES#' '' '.gitignore'
+
+# Remove "#POSTGRES#" in docker-compose.yml
+echo 'Updating docker-compose.yml'
+docker/replace_sif '#POSTGRES#' '' 'docker-compose.yml'
+
+# Remove the SQLite section in the Gemfile
+echo 'Removing SQLite from the Gemfile'
+delete_between_strings_in_file '# BEGIN: SQLite' '# END: SQLite' 'Gemfile'
+docker/replace_sif '# BEGIN: SQLite', '', 'Gemfile'
+docker/replace_sif '# END: SQLite', '', 'Gemfile'
+
+# Remove the excess blank lines
+# Source:
+# https://stackoverflow.com/questions/922449/how-can-i-replace-multiple-empty-lines-with-a-single-empty-line-in-bash
+echo 'Removing excess blank lines from the Gemfile'
+cat -s Gemfile > Gemfile-new
+mv Gemfile-new Gemfile
+
+# BEGIN: Update the pg section in the Gemfile
+# (pg for all environments, not just production)
+echo 'Updating the pg section in the Gemfile'
+
+# 1.  Get the line specifying the pg gem AND its pinned version
+LINE_PG=`grep "gem 'pg'" Gemfile`
+
+# 2.  Delete everything between '# BEGIN: pg section' and $LINE_PG
+delete_between_strings_in_file '# BEGIN: pg section' "$LINE_PG" 'Gemfile'
+
+# 3.  Delete everything between $LINE_PG and '# END: pg section'
+delete_between_strings_in_file "$LINE_PG" '# END: pg section' 'Gemfile'
+
+# 4.  Remove the indent in the pg line (no longer needed)
+docker/replace_sif "  gem 'pg'" "gem 'pg'" Gemfile
+
+# END: Update the pg section in the Gemfile
+
+echo 'git rm config/database.yml'
+git rm config/database.yml
+
+echo 'Configure config/database.yml'
+cp config/database-pg.yml config/database.yml
+
+echo 'Configure .env-docker/development/database'
+cp .env-docker/development/database-template .env-docker/development/database
+docker/replace_sif 'POSTGRES_DB_1' $DB_ROOT '.env-docker/development/database'
+docker/replace_sif 'POSTGRES_USER_1' $DB_USERNAME '.env-docker/development/database'
+docker/replace_sif 'POSTGRES_PASSWORD_1' $DB_PASSWORD '.env-docker/development/database'
+
+echo 'Configure init.sql'
+cp init.sql.template init.sql
+docker/replace_sif 'POSTGRES_USER_1' $DB_USERNAME 'init.sql'
+docker/replace_sif 'POSTGRES_PASSWORD_1' $DB_PASSWORD 'init.sql'
+chmod +x init.sql
+
+echo '*****************************************************'
+echo 'The transition from SQLite to PostgreSQL is complete!'
+echo 'Enter the following commands:'
+echo 'docker/nuke'
+echo 'docker/build'

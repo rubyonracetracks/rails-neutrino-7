@@ -2,16 +2,16 @@
 set -e
 
 # BEGIN: PostgreSQL setup
-#POSTGRES exec_pg_setup () {
-  #POSTGRES FILENAME=$1
-  #POSTGRES if [[ ! -f $FILENAME ]]
-  #POSTGRES then
-    #POSTGRES docker/pg_setup_1
-  #POSTGRES fi
-#POSTGRES }
+#POSTGRES#exec_pg_setup () {
+  #POSTGRES#FILENAME=$1
+  #POSTGRES#if [[ ! -f $FILENAME ]]
+  #POSTGRES#then
+    #POSTGRES#docker/pg_setup_1
+  #POSTGRES#fi
+#POSTGRES#}
 
-#POSTGRES exec_pg_setup 'config/database.yml'
-#POSTGRES exec_pg_setup '.env-docker/development/database'
+#POSTGRES#exec_pg_setup 'config/database.yml'
+#POSTGRES#exec_pg_setup '.env-docker/development/database'
 # END: PostgreSQL setup
 
 # BEGIN: Get Ruby version
@@ -42,6 +42,14 @@ echo '##############################'
 #GEM_INSTALL_BUNDLER docker/gem_install_bundler
 
 #BUNDLE_INSTALL docker/bundle_install
+
+#POSTGRES#echo '------------------------------------------------------------'
+#POSTGRES#echo 'BEGIN: bundle exec rake db:create db:migrate db:test:prepare'
+#POSTGRES#echo '------------------------------------------------------------'
+#POSTGRES#docker/run bundle exec rake db:create db:migrate db:test:prepare
+#POSTGRES#echo '----------------------------------------------------------'
+#POSTGRES#echo 'END: bundle exec rake db:create db:migrate db:test:prepare'
+#POSTGRES#echo '----------------------------------------------------------'
 
 #DATABASE_MIGRATE docker/migrate
 

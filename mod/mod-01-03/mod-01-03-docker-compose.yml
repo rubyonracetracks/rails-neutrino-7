@@ -23,8 +23,8 @@ services:
     #MAILCATCHER#links:
       #MAILCATCHER#- mailcatcher
     #POSTGRES#env_file:
-      #POSTGRES#- .env/development/database
-      #POSTGRES#- .env/development/web
+      #POSTGRES#- .env-docker/development/database
+      #POSTGRES#- .env-docker/development/web
     #POSTGRES#depends_on:
       #POSTGRES#- database
 
@@ -37,7 +37,7 @@ services:
   #POSTGRES#database:
     #POSTGRES#image: postgres
     #POSTGRES#env_file:
-      #POSTGRES#- .env/development/database
+      #POSTGRES#- .env-docker/development/database
     #POSTGRES#volumes:
       #POSTGRES#- db_data:/var/lib/postgresql/data
       #POSTGRES#- ./init.sql:/docker-entrypoint-initdb.d/init.sql

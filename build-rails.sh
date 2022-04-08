@@ -224,6 +224,17 @@ then
   cd $DIR_APP && bash mod_app.sh '05-04'
 fi
 
+######
+# MISC
+######
+if [ "$UNIT_06" = 'Y' ]
+then
+  echo '############'
+  echo 'UNIT 6: MISC'
+  echo '############'
+  cd $DIR_APP && bash mod_app.sh '06-01'
+fi
+
 #########
 # CLEANUP
 #########
