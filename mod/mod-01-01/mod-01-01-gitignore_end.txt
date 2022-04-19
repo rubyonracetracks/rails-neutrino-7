@@ -38,3 +38,4 @@ mod_app.sh
 
 #POSTGRES#config/database.yml
 #POSTGRES#.env-docker/development/database
+#POSTGRES#init.sql

@@ -1,12 +1,23 @@
 #!/bin/bash
 set +e
 
-# NOTE: /home/winner/myapp/tmp/bundle is the BUNDLE_PATH directory specified in docker-compose.yml
-echo '----------------------------------------------------------------------------------------------'
-echo 'mkdir -p /home/winner/myapp/tmp/bundle && chown -R winner:winner /home/winner/myapp/tmp/bundle'
-docker-compose run --rm -u root web bash -c 'mkdir -p /home/winner/myapp/tmp/bundle && chown -R winner:winner /home/winner/myapp/tmp/bundle'
+APP_PATH='/home/winner/myapp'
 
-set -e
+# Set permissions
+# NOTE: Skipping this step in the GitLab CI setup results in permission issues
+chown_dir () {
+  DIR_TO_CHOWN=$1
+  echo '--------------------------------------------------------------'
+  echo "mkdir -p $DIR_TO_CHOWN && chown -R winner:winner $DIR_TO_CHOWN"
+  docker-compose run --rm -u root web bash -c "mkdir -p $DIR_TO_CHOWN && chown -R winner:winner $DIR_TO_CHOWN"
+}
+
+chown_dir "$APP_PATH"
+
+# NOTE: set -o pipefail is needed to ensure that any error or failure causes the whole pipeline to fail.
+# Without this specification, the CI status will provide a false sense of security by showing builds
+# as succeeding in spite of errors or failures.
+set -eo pipefail
 
 docker/gem_install_bundler
 
