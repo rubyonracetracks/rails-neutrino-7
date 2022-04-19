@@ -37,15 +37,16 @@ docker/replace_sif '#POSTGRES#' '' 'docker-compose.yml'
 # Remove the SQLite section in the Gemfile
 echo 'Removing SQLite from the Gemfile'
 delete_between_strings_in_file '# BEGIN: SQLite' '# END: SQLite' 'Gemfile'
-docker/replace_sif '# BEGIN: SQLite', '', 'Gemfile'
-docker/replace_sif '# END: SQLite', '', 'Gemfile'
+docker/replace_sif '# BEGIN: SQLite' '' 'Gemfile'
+docker/replace_sif '# END: SQLite' '' 'Gemfile'
 
 # Remove the excess blank lines
 # Source:
 # https://stackoverflow.com/questions/922449/how-can-i-replace-multiple-empty-lines-with-a-single-empty-line-in-bash
 echo 'Removing excess blank lines from the Gemfile'
-cat -s Gemfile > Gemfile-new
-mv Gemfile-new Gemfile
+mv Gemfile Gemfile-old
+grep -A1 . Gemfile-old | grep -v "^--$" > Gemfile
+rm Gemfile-old
 
 # BEGIN: Update the pg section in the Gemfile
 # (pg for all environments, not just production)

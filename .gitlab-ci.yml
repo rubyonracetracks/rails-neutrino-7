@@ -2,7 +2,9 @@ variables:
   DOCKER_HOST: tcp://docker:2375
   DOCKER_DRIVER: overlay2
 
-image: docker:stable
+image:
+  name: docker/compose
+
 services:
   - docker:dind
 
@@ -12,7 +14,7 @@ stages:
 
 before_script:
   - apk update
-  - apk add bash
+  - apk add bash git sed
 
 build_rails_app:
   stage: build
@@ -21,9 +23,15 @@ build_rails_app:
       - rails_neutrino_app
       - tmp
   script:
-    - bash ci-build.sh
+    - bash ci-start.sh
+    - bash main-build.sh
 
-test_rails_sqlite:
+test_sqlite:
   stage: test
   script:
-    - bash ci-test.sh 'rails_neutrino_test_sqlite'
+    - bash main-test.sh 'rails_app_sqlite'
+
+test_postgres:
+  stage: test
+  script:
+    - bash main-test.sh 'rails_app_postgres'

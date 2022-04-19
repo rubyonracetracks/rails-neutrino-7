@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Run this script before entering "git add" and "git commit".
 
