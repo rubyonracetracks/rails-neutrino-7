@@ -233,6 +233,10 @@ then
   echo 'UNIT 6: MISC'
   echo '############'
   cd $DIR_APP && bash mod_app.sh '06-01'
+  cd $DIR_APP && bash mod_app.sh '06-02'
+  cd $DIR_APP && bash mod_app.sh '06-03'
+  cd $DIR_APP && bash mod_app.sh '06-04'
+  cd $DIR_APP && bash mod_app.sh '06-05'
 fi
 
 #########
