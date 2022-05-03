@@ -1,0 +1,8 @@
+
+# BEGIN: Better Errors and Binding of Caller
+# better_errors: Provides more and better information in error pages
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+# END: Better Errors and Binding of Caller

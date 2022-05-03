@@ -13,6 +13,6 @@ docker/migrate
 
 echo '--------------------------------------'
 echo 'View this app at http://localhost:3000'
-#MAILCATCHER echo 'and the MailCatcher interface at http://localhost:1080'
+#MAILCATCHER#echo 'and the MailCatcher interface at http://localhost:1080'
 echo ''
 docker-compose up web

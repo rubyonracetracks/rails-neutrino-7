@@ -1,0 +1,6 @@
+
+# BEGIN: Metrics/BlockLength
+Metrics/BlockLength:
+  Exclude:
+    - config/environments/development.rb
+# END: Metrics/BlockLength
