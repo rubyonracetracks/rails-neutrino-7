@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+# If there are no outdated gems, "bundle outdated" produces a 0 exit code.
+
+# If there are any outdated gems, "bundle outdated" produces a 1 exit code
+# and prevents subsequent commands in the script from running.
+
+# Running "bundle outdated&" runs the command in the background.
+# Regardless of the outcome, the rest of the script will run.
+
+echo '----------------'
+echo 'bundle outdated&'
+bundle outdated&
+wait

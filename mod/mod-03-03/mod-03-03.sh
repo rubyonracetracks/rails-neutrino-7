@@ -13,6 +13,10 @@ echo '###############'
 echo 'bundle outdated'
 echo '###############'
 
+echo 'Adding bin/bundle_outdated'
+mv mod-03-03-bin-bundle_outdated bin/bundle_outdated
+chmod +x bin/bundle_outdated
+
 echo 'Adding docker/bundle_outdated'
 mv mod-03-03-docker-bundle_outdated docker/bundle_outdated
 chmod +x docker/bundle_outdated
