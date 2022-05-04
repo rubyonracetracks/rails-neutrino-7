@@ -53,7 +53,5 @@ fi
 
 # Skip bundler-outdated until docker/bundle-outdated is provided
 if [ -f docker/bundle_outdated ]; then
-  echo '---------------'
-  echo 'bundle outdated'
-  bundle outdated
+  bin/bundle_outdated
 fi

@@ -1,3 +1,4 @@
 #!/bin/bash
+set -e
 
-docker/run bin/audit
+docker/run bin/bundle_outdated
