@@ -239,6 +239,17 @@ then
   cd $DIR_APP && bash mod_app.sh '06-05'
 fi
 
+###########
+# OUTLINING
+###########
+if [ "$UNIT_07" = 'Y' ]
+then
+  echo '####################################'
+  echo 'UNIT 7: OUTLINING AND BLOCK DIAGRAMS'
+  echo '####################################'
+  cd $DIR_APP && bash mod_app.sh '07-01'
+fi
+
 #########
 # CLEANUP
 #########

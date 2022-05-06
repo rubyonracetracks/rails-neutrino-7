@@ -55,3 +55,8 @@ fi
 if [ -f docker/bundle_outdated ]; then
   bin/bundle_outdated
 fi
+
+# Skip tree until docker/tree is provided
+if [ -f docker/tree ]; then
+  bin/tree
+fi

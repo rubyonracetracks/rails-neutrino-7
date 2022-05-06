@@ -26,6 +26,7 @@ echo 'N' > tmp/unit03.txt
 echo 'Y' > tmp/unit04.txt
 echo 'N' > tmp/unit05.txt
 echo 'N' > tmp/unit06.txt
+echo 'N' > tmp/unit07.txt
 
 mkdir -p log
 bash build-rails.sh 2>&1 | tee log/$APP_NAME-$TIME_STAMP.txt
