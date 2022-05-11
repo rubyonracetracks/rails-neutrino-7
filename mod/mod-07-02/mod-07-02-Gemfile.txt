@@ -1,0 +1,6 @@
+
+# BEGIN: for docker/outline-short
+group :development do
+  gem 'annotate' # Adds comments listing parameters and the output of "rails routes"
+end
+# END: for docker/outline-short

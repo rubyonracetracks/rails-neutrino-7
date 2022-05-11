@@ -60,3 +60,8 @@ fi
 if [ -f docker/tree ]; then
   bin/tree
 fi
+
+# Skip annotate until docker/annotate is provided
+if [ -f docker/tree ]; then
+  bin/annotate
+fi

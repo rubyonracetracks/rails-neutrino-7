@@ -248,6 +248,7 @@ then
   echo 'UNIT 7: OUTLINING AND BLOCK DIAGRAMS'
   echo '####################################'
   cd $DIR_APP && bash mod_app.sh '07-01'
+  cd $DIR_APP && bash mod_app.sh '07-02'
 fi
 
 #########

@@ -5,4 +5,6 @@
 # as succeeding in spite of errors or failures.
 set -eo pipefail
 
-docker/run bin/tree
+docker/tree
+
+# docker/annotate
