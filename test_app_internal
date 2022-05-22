@@ -62,6 +62,16 @@ if [ -f docker/tree ]; then
 fi
 
 # Skip annotate until docker/annotate is provided
-if [ -f docker/tree ]; then
+if [ -f docker/annotate ]; then
   bin/annotate
+fi
+
+# Skip railroady until docker/railroady is provided
+if [ -f docker/railroady ]; then
+  bin/railroady
+fi
+
+# Skip rails-erd until docker/rails_erd is provided
+if [ -f docker/rails_erd ]; then
+  bin/rails_erd
 fi
