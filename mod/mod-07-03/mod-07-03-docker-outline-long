@@ -2,4 +2,4 @@
 set -e
 
 docker/railroady
-docker/rails_erd
+docker/rails-erd

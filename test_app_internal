@@ -71,7 +71,7 @@ if [ -f docker/railroady ]; then
   bin/railroady
 fi
 
-# Skip rails-erd until docker/rails_erd is provided
-if [ -f docker/rails_erd ]; then
-  bin/rails_erd
+# Skip rails-erd until docker/rails-erd is provided
+if [ -f docker/rails-erd ]; then
+  bin/rails-erd
 fi

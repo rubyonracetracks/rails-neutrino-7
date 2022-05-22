@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-OUTPUT_FILE_MODELS='log/diagram-models-rails_erd' # .dot is automatically added
+OUTPUT_FILE_MODELS='log/diagram-models-rails-erd' # .dot is automatically added
 
 STR1="# gem 'rails-erd'"
 STR2="gem 'rails-erd'"
