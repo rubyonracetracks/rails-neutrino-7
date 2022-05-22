@@ -28,6 +28,7 @@ echo 'Y' > tmp/unit03.txt
 echo 'Y' > tmp/unit04.txt
 echo 'Y' > tmp/unit05.txt
 echo 'Y' > tmp/unit06.txt
+echo 'Y' > tmp/unit07.txt
 
 LOG_BUILD="log/main-$TIME_STAMP-build.txt"
 LOG_TEST_SQLITE="log/main-$TIME_STAMP-test-sqlite.txt"

@@ -3,7 +3,7 @@ set -e
 
 RAILS_VERSION=`cat params/rails_version.txt`
 MODE='V'
-STAGE='1'
+STAGE='7'
 APP_NAME="rails$RAILS_VERSION$MODE$STAGE"
 TIME_STAMP=`date -u +%Y%m%d-%H%M%S-%3N`
 
@@ -20,13 +20,13 @@ echo "$TIME_STAMP" > tmp/time_stamp.txt
 echo 'N' > tmp/annotate.txt
 
 echo 'N' > tmp/unit00.txt
-echo 'Y' > tmp/unit01.txt
+echo 'N' > tmp/unit01.txt
 echo 'N' > tmp/unit02.txt
 echo 'N' > tmp/unit03.txt
 echo 'N' > tmp/unit04.txt
 echo 'N' > tmp/unit05.txt
 echo 'N' > tmp/unit06.txt
-echo 'N' > tmp/unit07.txt
+echo 'Y' > tmp/unit07.txt
 
 mkdir -p log
 bash build-rails.sh 2>&1 | tee log/$APP_NAME-$TIME_STAMP.txt

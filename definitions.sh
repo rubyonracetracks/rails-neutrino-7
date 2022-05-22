@@ -23,6 +23,7 @@ UNIT_03=`cat tmp/unit03.txt`
 UNIT_04=`cat tmp/unit04.txt`
 UNIT_05=`cat tmp/unit05.txt`
 UNIT_06=`cat tmp/unit06.txt`
+UNIT_07=`cat tmp/unit07.txt`
 
 # Delete Docker containers
 delete_docker_container () {

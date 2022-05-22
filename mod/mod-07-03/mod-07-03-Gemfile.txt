@@ -1,0 +1,7 @@
+
+# BEGIN: for docker/outline-long
+group :development do
+  # gem 'railroady' # Generates block diagrams
+  # gem 'rails-erd' # Generates block diagrams
+end
+# END: for docker/outline-long

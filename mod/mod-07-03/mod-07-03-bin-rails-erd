@@ -1,0 +1,31 @@
+#!/bin/bash
+set -e
+
+OUTPUT_FILE_MODELS='log/diagram-models-rails-erd' # .dot is automatically added
+
+STR1="# gem 'rails-erd'"
+STR2="gem 'rails-erd'"
+
+bin/replace_sif "$STR1" "$STR2" 'Gemfile'
+wait
+echo '----------------------'
+echo 'bundle install --quiet'
+bundle install --quiet
+wait
+
+# Parameters: https://voormedia.github.io/rails-erd/customise.html
+echo '---------------'
+echo 'Using rails-erd'
+bundle exec erd --attributes=foreign_keys,primary_keys,timestamps,inheritance,content \
+  --filetype=dot --filename=$OUTPUT_FILE_MODELS --inheritance=true \
+  --notation=bachman --orientation=vertical --polymorphism=true
+
+wait
+echo
+
+bin/replace_sif "STR2" "STR1" 'Gemfile'
+wait
+echo '----------------------'
+echo 'bundle install --quiet'
+bundle install --quiet
+wait

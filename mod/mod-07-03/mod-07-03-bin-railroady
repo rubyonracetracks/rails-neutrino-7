@@ -1,0 +1,40 @@
+#!/bin/bash
+set -e
+
+OUTPUT_FILE_MODELS_COMPLETE='log/diagram-models-complete.dot'
+OUTPUT_FILE_MODELS_BRIEF='log/diagram-models-brief.dot'
+OUTPUT_FILE_CONTROLLERS_COMPLETE='log/diagram-controllers-complete.dot'
+OUTPUT_FILE_CONTROLLERS_BRIEF='log/diagram-controllers-brief.dot'
+
+STR1="# gem 'railroady'"
+STR2="gem 'railroady'"
+
+bin/replace_sif "$STR1" "$STR2" 'Gemfile'
+wait
+echo '----------------------'
+echo 'bundle install --quiet'
+bundle install --quiet
+wait
+
+echo '-----------------------------------------------------------------------------------------------------------------------------'
+echo "bundle exec railroady -lamM | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | dot -Tdot > $OUTPUT_FILE_MODELS_COMPLETE"
+bundle exec railroady -lamM | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | dot -Tdot > $OUTPUT_FILE_MODELS_COMPLETE
+
+echo '---------------------------------------------------------------------------------------------------------------------------'
+echo "bundle exec railroady -blamM | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | dot -Tdot > $OUTPUT_FILE_MODELS_BRIEF"
+bundle exec railroady -blamM | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | dot -Tdot > $OUTPUT_FILE_MODELS_BRIEF
+
+echo '--------------------------------------------------------------------------------------------------------------------------------'
+echo "bundle exec railroady -lC | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | dot -Tdot > $OUTPUT_FILE_CONTROLLERS_COMPLETE"
+bundle exec railroady -lC | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | dot -Tdot > $OUTPUT_FILE_CONTROLLERS_COMPLETE
+
+echo '------------------------------------------------------------------------------------------------------------------------------'
+echo "bundle exec railroady -blC | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | dot -Tdot > $OUTPUT_FILE_CONTROLLERS_BRIEF"
+bundle exec railroady -blC | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | dot -Tdot > $OUTPUT_FILE_CONTROLLERS_BRIEF
+
+bin/replace_sif "STR2" "STR1" 'Gemfile'
+wait
+echo '----------------------'
+echo 'bundle install --quiet'
+bundle install --quiet
+wait

@@ -15,7 +15,7 @@ echo '----------'
 echo 'git status'
 git status
 
-#OUTLINE_SHORT docker/outline_short
+#OUTLINE_SHORT docker/outline-short
 
 #OUTLINE_SHORT echo '----------'
 #OUTLINE_SHORT echo 'git status'

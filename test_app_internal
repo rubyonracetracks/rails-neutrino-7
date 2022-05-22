@@ -55,3 +55,23 @@ fi
 if [ -f docker/bundle_outdated ]; then
   bin/bundle_outdated
 fi
+
+# Skip tree until docker/tree is provided
+if [ -f docker/tree ]; then
+  bin/tree
+fi
+
+# Skip annotate until docker/annotate is provided
+if [ -f docker/annotate ]; then
+  bin/annotate
+fi
+
+# Skip railroady until docker/railroady is provided
+if [ -f docker/railroady ]; then
+  bin/railroady
+fi
+
+# Skip rails-erd until docker/rails-erd is provided
+if [ -f docker/rails-erd ]; then
+  bin/rails-erd
+fi
