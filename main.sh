@@ -19,7 +19,7 @@ echo "$STAGE" > tmp/stage.txt
 echo "$APP_NAME" > tmp/app_name.txt
 echo "$TIME_STAMP" > tmp/time_stamp.txt
 
-echo 'Y' > tmp/annotate.txt
+touch tmp/annotate.txt
 
 echo 'Y' > tmp/unit00.txt
 echo 'Y' > tmp/unit01.txt
