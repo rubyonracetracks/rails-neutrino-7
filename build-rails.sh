@@ -40,7 +40,7 @@ echo ''
 echo "Main Directory: $DIR_MAIN"
 echo "App Directory: $DIR_APP"
 echo ''
-echo "App Annotations: $ANNOTATE"
+echo "Frequent App Annotations: $ANNOTATE"
 echo ''
 echo '-----------------'
 echo 'Scope parameters:'

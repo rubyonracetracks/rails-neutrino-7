@@ -14,7 +14,10 @@ APP_NAME=`cat tmp/app_name.txt`
 TIME_STAMP=`cat tmp/time_stamp.txt`
 DIR_APP=$DIR_MAIN/$APP_NAME
 
-ANNOTATE=`cat tmp/annotate.txt`
+ANNOTATE='N'
+if [ -f tmp/annotate.txt ]; then
+  ANNOTATE='Y'
+fi
 
 UNIT_00=`cat tmp/unit00.txt`
 UNIT_01=`cat tmp/unit01.txt`
