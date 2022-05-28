@@ -17,14 +17,7 @@ echo "$STAGE" > tmp/stage.txt
 echo "$APP_NAME" > tmp/app_name.txt
 echo "$TIME_STAMP" > tmp/time_stamp.txt
 
-echo 'N' > tmp/unit00.txt
-echo 'N' > tmp/unit01.txt
-echo 'N' > tmp/unit02.txt
-echo 'N' > tmp/unit03.txt
-echo 'N' > tmp/unit04.txt
-echo 'N' > tmp/unit05.txt
-echo 'Y' > tmp/unit06.txt
-echo 'N' > tmp/unit07.txt
+touch tmp/unit06.txt
 
 mkdir -p log
 bash build-rails.sh 2>&1 | tee log/$APP_NAME-$TIME_STAMP.txt

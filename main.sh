@@ -21,14 +21,14 @@ echo "$TIME_STAMP" > tmp/time_stamp.txt
 
 touch tmp/annotate.txt
 
-echo 'Y' > tmp/unit00.txt
-echo 'Y' > tmp/unit01.txt
-echo 'Y' > tmp/unit02.txt
-echo 'Y' > tmp/unit03.txt
-echo 'Y' > tmp/unit04.txt
-echo 'Y' > tmp/unit05.txt
-echo 'Y' > tmp/unit06.txt
-echo 'Y' > tmp/unit07.txt
+touch tmp/unit00.txt
+touch tmp/unit01.txt
+touch tmp/unit02.txt
+touch tmp/unit03.txt
+touch tmp/unit04.txt
+touch tmp/unit05.txt
+touch tmp/unit06.txt
+touch tmp/unit07.txt
 
 LOG_BUILD="log/main-$TIME_STAMP-build.txt"
 LOG_TEST_SQLITE="log/main-$TIME_STAMP-test-sqlite.txt"
