@@ -57,6 +57,10 @@ echo "Configure production environment?     $UNIT_04"
 echo ''
 echo "Configure testing environment?        $UNIT_05"
 echo ''
+echo "Add misc features?                    $UNIT_06"
+echo ''
+echo "Add outlining/block diagram scripts?  $UNIT_07"
+echo ''
 
 ####################################################################
 # Activate NVM and RVM if this script was triggered from the host OS

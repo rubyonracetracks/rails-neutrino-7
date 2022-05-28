@@ -19,14 +19,45 @@ if [ -f tmp/annotate.txt ]; then
   ANNOTATE='Y'
 fi
 
-UNIT_00=`cat tmp/unit00.txt`
-UNIT_01=`cat tmp/unit01.txt`
-UNIT_02=`cat tmp/unit02.txt`
-UNIT_03=`cat tmp/unit03.txt`
-UNIT_04=`cat tmp/unit04.txt`
-UNIT_05=`cat tmp/unit05.txt`
-UNIT_06=`cat tmp/unit06.txt`
-UNIT_07=`cat tmp/unit07.txt`
+UNIT_00='N'
+if [ -f tmp/unit00.txt ]; then
+  UNIT_00='Y'
+fi
+
+UNIT_01='N'
+if [ -f tmp/unit01.txt ]; then
+  UNIT_01='Y'
+fi
+
+UNIT_02='N'
+if [ -f tmp/unit02.txt ]; then
+  UNIT_02='Y'
+fi
+
+UNIT_03='N'
+if [ -f tmp/unit03.txt ]; then
+  UNIT_03='Y'
+fi
+
+UNIT_04='N'
+if [ -f tmp/unit04.txt ]; then
+  UNIT_04='Y'
+fi
+
+UNIT_05='N'
+if [ -f tmp/unit05.txt ]; then
+  UNIT_05='Y'
+fi
+
+UNIT_06='N'
+if [ -f tmp/unit06.txt ]; then
+  UNIT_06='Y'
+fi
+
+UNIT_07='N'
+if [ -f tmp/unit07.txt ]; then
+  UNIT_07='Y'
+fi
 
 # Delete Docker containers
 delete_docker_container () {
