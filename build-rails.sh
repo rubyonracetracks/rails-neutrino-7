@@ -61,6 +61,8 @@ echo "Add misc features?                    $UNIT_06"
 echo ''
 echo "Add outlining/block diagram scripts?  $UNIT_07"
 echo ''
+echo "Add static pages?                     $UNIT_08"
+echo ''
 
 ####################################################################
 # Activate NVM and RVM if this script was triggered from the host OS
@@ -255,6 +257,21 @@ then
   cd $DIR_APP && bash mod_app.sh '07-02'
   cd $DIR_APP && bash mod_app.sh '07-03'
 fi
+
+##############
+# STATIC PAGES
+##############
+if [ "$UNIT_08" = 'Y' ]
+then
+  echo '####################'
+  echo 'UNIT 8: STATIC PAGES'
+  echo '####################'
+  cd $DIR_APP && bash mod_app.sh '08-01'
+  cd $DIR_APP && bash mod_app.sh '08-02'
+  cd $DIR_APP && bash mod_app.sh '08-03'
+  cd $DIR_APP && bash mod_app.sh '08-04'
+fi
+
 
 #########
 # CLEANUP
