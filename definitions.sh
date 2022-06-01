@@ -59,6 +59,12 @@ if [ -f tmp/unit07.txt ]; then
   UNIT_07='Y'
 fi
 
+UNIT_08='N'
+if [ -f tmp/unit08.txt ]; then
+  UNIT_08='Y'
+fi
+
+
 # Delete Docker containers
 delete_docker_container () {
   CONTAINER=$1

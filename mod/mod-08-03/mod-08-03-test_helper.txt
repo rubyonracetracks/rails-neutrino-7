@@ -1,0 +1,3 @@
+    # Make app/helpers/application_helper.rb available
+    include ApplicationHelper
+

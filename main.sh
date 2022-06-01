@@ -29,6 +29,7 @@ touch tmp/unit04.txt
 touch tmp/unit05.txt
 touch tmp/unit06.txt
 touch tmp/unit07.txt
+touch tmp/unit08.txt
 
 LOG_BUILD="log/main-$TIME_STAMP-build.txt"
 LOG_TEST_SQLITE="log/main-$TIME_STAMP-test-sqlite.txt"
