@@ -20,9 +20,6 @@ set -eo pipefail
 
 docker/create_dockerfile
 
-# Fill in the Ruby version in the Dockerfile
-docker/replace_sif 'RUBY_VERSION' "$RUBY_VERSION_HERE" Dockerfile
-
 docker-compose down -v --remove-orphans
 wait
 echo '###########################'
