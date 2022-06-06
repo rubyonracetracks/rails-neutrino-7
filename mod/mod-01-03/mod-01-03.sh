@@ -14,6 +14,8 @@ mv mod-01-03-Dockerfile-template Dockerfile-template
 mv mod-01-03-docker-compose.yml docker-compose.yml
 mv mod-01-03-docker_build docker/build
 chmod +x docker/build
+mv mod-01-03-docker_create_dockerfile docker/create_dockerfile
+chmod +x docker/create_dockerfile
 mv mod-01-03-docker_build-log docker/build-log
 chmod +x docker/build-log
 mv mod-01-03-docker_run docker/run

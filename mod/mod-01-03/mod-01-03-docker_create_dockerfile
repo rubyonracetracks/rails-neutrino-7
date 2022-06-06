@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# NOTE: set -o pipefail is needed to ensure that any error or failure causes the whole pipeline to fail.
+# Without this specification, the CI status will provide a false sense of security by showing builds
+# as succeeding in spite of errors or failures.
+set -eo pipefail
+
+# BEGIN: Get Ruby version
+cp .ruby-version tmp/.ruby-version-process
+sed -i.bak "s|ruby-||g" tmp/.ruby-version-process
+rm tmp/.ruby-version-process.bak
+RUBY_VERSION_HERE=`cat tmp/.ruby-version-process`
+rm tmp/.ruby-version-process
+# END: Get Ruby version
+
+# Copy Dockerfile-template to Dockerfile
+cp Dockerfile-template Dockerfile
+
+# Fill in the Ruby version in the Dockerfile
+docker/replace_sif 'RUBY_VERSION' "$RUBY_VERSION_HERE" Dockerfile
