@@ -19,17 +19,7 @@ set -eo pipefail
 # END: PostgreSQL setup
 
 docker/create_dockerfile
-
-docker-compose down -v --remove-orphans
-wait
-echo '###########################'
-echo 'BEGIN: docker-compose build'
-echo '###########################'
-docker-compose build # Set up the Docker containers
-wait
-echo '##############################'
-echo 'FINISHED: docker-compose build'
-echo '##############################'
+docker/compose_up
 
 #GEM_INSTALL_BUNDLER docker/gem_install_bundler
 
