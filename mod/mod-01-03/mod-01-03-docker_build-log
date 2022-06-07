@@ -25,13 +25,9 @@ docker/compose_up
 
 #BUNDLE_INSTALL docker/bundle_install
 
-#POSTGRES#echo '------------------------------------------------------------'
-#POSTGRES#echo 'BEGIN: bundle exec rake db:create db:migrate db:test:prepare'
-#POSTGRES#echo '------------------------------------------------------------'
-#POSTGRES#docker/run bundle exec rake db:create db:migrate db:test:prepare
-#POSTGRES#echo '----------------------------------------------------------'
-#POSTGRES#echo 'END: bundle exec rake db:create db:migrate db:test:prepare'
-#POSTGRES#echo '----------------------------------------------------------'
+# The "bundle exec rake db:create db:migrate db:test:prepare" command
+# is needed to setup up the PostgreSQL database.
+#POSTGRES#docker/db_setup
 
 #DATABASE_MIGRATE docker/migrate
 
