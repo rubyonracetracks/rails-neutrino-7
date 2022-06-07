@@ -29,9 +29,19 @@ build_rails_app:
 test_sqlite:
   stage: test
   script:
-    - bash main-test.sh 'rails_app_sqlite'
+    - bash main-test.sh 'rails_test_sqlite'
 
 test_postgres:
   stage: test
   script:
-    - bash main-test.sh 'rails_app_postgres'
+    - bash main-test.sh 'rails_test_postgres'
+
+server_sqlite:
+  stage: test
+  script:
+    - bash ci-server.sh 'rails_server_sqlite'
+
+server_postgres:
+  stage: test
+  script:
+    - bash ci-server.sh 'rails_server_postgres'
