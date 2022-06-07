@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# NOTE: set -o pipefail is needed to ensure that any error or failure causes the whole pipeline to fail.
+# Without this specification, the CI status will provide a false sense of security by showing builds
+# as succeeding in spite of errors or failures.
+set -eo pipefail
+
+echo '------------------------------------------------------------'
+echo 'BEGIN: bundle exec rake db:create db:migrate db:test:prepare'
+echo '------------------------------------------------------------'
+docker/run bundle exec rake db:create db:migrate db:test:prepare
+echo '----------------------------------------------------------'
+echo 'END: bundle exec rake db:create db:migrate db:test:prepare'
+echo '----------------------------------------------------------'

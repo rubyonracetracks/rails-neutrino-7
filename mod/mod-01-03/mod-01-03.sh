@@ -18,6 +18,8 @@ mv mod-01-03-docker_create_dockerfile docker/create_dockerfile
 chmod +x docker/create_dockerfile
 mv mod-01-03-docker-compose_up docker/compose_up
 chmod +x docker/compose_up
+mv mod-01-03-docker-db_setup docker/db_setup
+chmod +x docker/db_setup
 mv mod-01-03-docker_build-log docker/build-log
 chmod +x docker/build-log
 mv mod-01-03-docker_run docker/run
