@@ -213,7 +213,6 @@ then
   echo '##############################'
   cd $DIR_APP && bash mod_app.sh '04-01'
   cd $DIR_APP && bash mod_app.sh '04-02'
-  cd $DIR_APP && bash mod_app.sh '04-03'
 fi
 
 #########
