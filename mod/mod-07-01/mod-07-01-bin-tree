@@ -56,8 +56,8 @@ tree test/integration >> $file_vi
 echo '' >> $file_vi
 tree app/views >> $file_vi
 
-echo '------------------------------'
-echo 'outline-short.sh OUTPUT FILES:'
+echo '--------------------------------'
+echo 'OUTPUT FILES from tree commands:'
 echo $file_he
 echo $file_mo
 echo $file_co

@@ -26,22 +26,67 @@ build_rails_app:
     - bash ci-start.sh
     - bash main-build.sh
 
-test_sqlite:
+1A_test_sqlite:
   stage: test
   script:
-    - bash main-test.sh 'rails_test_sqlite'
+    - bash ci-test.sh 'rails_test_sqlite'
 
-test_postgres:
+1B_test_postgres:
   stage: test
   script:
-    - bash main-test.sh 'rails_test_postgres'
+    - bash ci-test.sh 'rails_test_postgres'
 
-server_sqlite:
+2A_server_sqlite:
   stage: test
   script:
-    - bash ci-server.sh 'rails_server_sqlite'
+    - bash ci-test.sh 'rails_server_sqlite'
 
-server_postgres:
+2B_server_postgres:
   stage: test
   script:
-    - bash ci-server.sh 'rails_server_postgres'
+    - bash ci-test.sh 'rails_server_postgres'
+
+3A_rails_best_practices:
+  stage: test
+  script:
+    - bash ci-test.sh 'rails_rbp'
+
+3B_rubocop:
+  stage: test
+  script:
+    - bash ci-test.sh 'rails_rubocop'
+
+4A_bundler_audit:
+  stage: test
+  script:
+    - bash ci-test.sh 'rails_audit'
+
+4B_brakeman:
+  stage: test
+  script:
+    - bash ci-test.sh 'rails_brakeman'
+
+4C_bundle_outdated:
+  stage: test
+  script:
+    - bash ci-test.sh 'rails_bundle_outdated'
+
+5A_tree:
+  stage: test
+  script:
+    - bash ci-test.sh 'rails_tree'
+
+5B_annotate:
+  stage: test
+  script:
+    - bash ci-test.sh 'rails_annotate'
+
+5C_railroady:
+  stage: test
+  script:
+    - bash ci-test.sh 'rails_railroady'
+
+5D_rails_erd:
+  stage: test
+  script:
+    - bash ci-test.sh 'rails_erd'
