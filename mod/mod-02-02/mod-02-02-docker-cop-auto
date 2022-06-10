@@ -5,6 +5,6 @@
 # as succeeding in spite of errors or failures.
 set -eo pipefail
 
-echo '----------------------------------'
-echo 'bundle exec rubocop --auto-correct'
-docker-compose run --rm web bundle exec rubocop --auto-correct
+echo '-------------------------------------'
+echo 'bundle exec rubocop --autocorrect-all'
+docker-compose run --rm web bundle exec rubocop --autocorrect-all
