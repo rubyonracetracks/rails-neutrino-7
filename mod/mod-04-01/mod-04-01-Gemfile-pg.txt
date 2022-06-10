@@ -1,5 +1,5 @@
 # BEGIN: pg section
-# NOTE: This section is automatically updated by the pg_setup_full.sh script
+# NOTE: This section is automatically updated by the docker/pg_setup_2 script
 group :production do
   gem 'pg'
 end

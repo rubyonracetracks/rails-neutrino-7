@@ -6,13 +6,14 @@ set -e
 # controller tests.
 
 # AGENDA
-# * Add testh.sh, testhl.sh, testm.sh, testml.sh, testc.sh, and testcl.sh.
+# * Add docker/testh, docker/testhl, docker/testm, docker/testml,
+#   docker/testc, and docker/testcl.
 
 echo '#####################'
 echo 'Quick Testing Scripts'
 echo '#####################'
 
-# WICHTIG/LEGACY/bash: add testh.sh, testm.sh, and testc.sh
+# WICHTIG/LEGACY/bash: add docker/testh, docker/testm, and docker/testc
 
 mv mod-05-02-docker_testh docker/testh
 chmod +x docker/testh
