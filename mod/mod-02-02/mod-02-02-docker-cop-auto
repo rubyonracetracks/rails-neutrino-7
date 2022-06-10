@@ -7,4 +7,4 @@ set -eo pipefail
 
 echo '-------------------------------------'
 echo 'bundle exec rubocop --autocorrect-all'
-docker-compose run --rm web bundle exec rubocop --autocorrect-all
+docker/run bundle exec rubocop --autocorrect-all
