@@ -10,4 +10,4 @@ require 'line_containing'
 
 puts 'Enabling docker/audit in docker/test_code'
 StringInFile.replace('# docker/audit', 'docker/audit', 'docker/test_code')
-system('chmod +x docker/test_code')
+system('chmod +x docker/test_code', exception: true)

@@ -10,11 +10,11 @@ require 'gemfile_entry'
 puts 'Adding SimpleCov to the Gemfile'
 InsertFromFile.add_end('mod-05-04-add_to_Gemfile.txt', 'Gemfile')
 puts 'bundle update --quiet'
-system('bundle update --quiet')
+system('bundle update --quiet', exception: true)
 puts 'Pinning the version of SimpleCov'
 StringInFile.replace("gem 'simplecov'", GemfileEntry.active('simplecov'), 'Gemfile')
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)
 
 puts 'Adding the SimpleCov setup to test/test_helper.rb'
 # InsertFromFile.add_beginning('mod-05-04-add_to_test_helper.txt', 'test/test_helper.rb')

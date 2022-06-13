@@ -9,7 +9,7 @@ InsertFromFile.add_beginning('mod-01-01-Gemfile_start.txt', 'Gemfile')
 InsertFromFile.add_end('mod-01-01-Gemfile_end.txt', 'Gemfile')
 
 # WICHTIG/LEGACY/main: Remove instances of .DS_Store in repository
-system("find . -name '.DS_Store' -type f -delete")
+system("find . -name '.DS_Store' -type f -delete", exception: true)
 
 puts '-----------------------------------------------------------'
 puts 'Updating .gitignore to mark the initial contents and to add'
@@ -24,8 +24,8 @@ def fill_in_gitignore(platform)
 
   puts '---------------------------------'
   puts "Downloading #{url} to #{filename}"
-  system("curl -o #{filename} -OL #{url}")
-  system('wait')
+  system("curl -o #{filename} -OL #{url}", exception: true)
+  sleep 0.01
 
   puts '--------------------------------------------------------'
   puts "Adding selected #{platform}-specific files to .gitignore"

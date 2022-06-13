@@ -11,22 +11,22 @@ require 'line_containing'
 puts 'Updating the Gemfile'
 InsertFromFile.add_end('mod-07-02-Gemfile.txt', 'Gemfile')
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)
 StringInFile.replace("gem 'annotate'", GemfileEntry.active('annotate'), 'Gemfile')
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)
 
 # WICHTIG/LEGACY/bash: add bin/annotate
 puts 'Adding bin/annotate'
-system('mv mod-07-02-bin-annotate bin/annotate')
-system('chmod +x bin/annotate')
+system('mv mod-07-02-bin-annotate bin/annotate', exception: true)
+system('chmod +x bin/annotate', exception: true)
 
 # WICHTIG/LEGACY/bash: add docker/annotate
 puts 'Adding docker/annotate'
-system('mv mod-07-02-docker-annotate docker/annotate')
-system('chmod +x docker/annotate')
+system('mv mod-07-02-docker-annotate docker/annotate', exception: true)
+system('chmod +x docker/annotate', exception: true)
 
 # Enable docker/annotate in docker/outline-short
 puts 'Enabling docker/annotate in docker/outline-short'
 StringInFile.replace('# docker/annotate', 'docker/annotate', 'docker/outline-short')
-system('chmod +x docker/outline-short')
+system('chmod +x docker/outline-short', exception: true)

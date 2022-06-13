@@ -7,4 +7,4 @@ require 'gemfile_entry'
 require 'string_in_file'
 
 StringInFile.replace('#GEM_INSTALL_BUNDLER ', '', 'docker/build-log')
-system('chmod +x docker/build-log')
+system('chmod +x docker/build-log', exception: true)

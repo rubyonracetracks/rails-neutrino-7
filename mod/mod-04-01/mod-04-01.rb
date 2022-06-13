@@ -10,7 +10,7 @@ require 'remove_double_blank'
 # Not executing "bundle install" in the CI environment
 # causes the gemfile_entry gem to choke.
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)
 
 # WICHTIG/LEGACY/all_or_nothing: pin rails, sqlite/pg, and other gems
 puts 'Pinning rails'
@@ -26,8 +26,8 @@ RemoveDoubleBlank.update('Gemfile')
 puts 'Adding the pg section to the Gemfile; pinning pg'
 InsertFromFile.add_end('mod-04-01-Gemfile-pg.txt', 'Gemfile')
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)
 LineContaining.replace("gem 'pg'", "  #{GemfileEntry.active('pg')}", 'Gemfile')
 
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)

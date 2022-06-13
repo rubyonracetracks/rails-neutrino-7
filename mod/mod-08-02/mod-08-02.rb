@@ -7,8 +7,8 @@ require 'insert_from_file'
 require 'line_containing'
 
 puts 'Generating static pages'
-system('bin/rails generate controller StaticPages home about contact')
-system('wait')
+system('bin/rails generate controller StaticPages home about contact', exception: true)
+sleep 0.01
 
 puts 'Filling in static pages controller test'
 StringInFile.add_beginning("# frozen_string_literal: true\n\n", 'test/controllers/static_pages_controller_test.rb')
@@ -22,10 +22,10 @@ InsertFromFile.add_after('mod-08-02-static_pages_controller_test.txt',
                          'class StaticPagesControllerTest < ActionDispatch::IntegrationTest')
 
 puts 'Updating config/routes.rb'
-system('mv mod-08-02-routes.rb config/routes.rb')
+system('mv mod-08-02-routes.rb config/routes.rb', exception: true)
 
 puts 'Removing unused static pages helper'
-system('rm app/helpers/static_pages_helper.rb')
+system('rm app/helpers/static_pages_helper.rb', exception: true)
 
 puts 'Updating static pages controller'
 StringInFile.add_beginning("# frozen_string_literal: true\n\n", 'app/controllers/static_pages_controller.rb')

@@ -10,15 +10,15 @@ puts 'Updating the Gemfile'
 LineContaining.add_before("gem 'rubocop'", "  gem 'rails_best_practices'", 'Gemfile')
 
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)
 StringInFile.replace("gem 'rails_best_practices'", GemfileEntry.active('rails_best_practices'), 'Gemfile')
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)
 
 puts 'Updating docker/test_code'
 StringInFile.replace('# docker/rbp', 'docker/rbp', 'docker/test_code')
-system('chmod +x docker/test_code')
+system('chmod +x docker/test_code', exception: true)
 
 puts 'Updating docker/git_check'
 StringInFile.replace('# docker/rbp', 'docker/rbp', 'docker/git_check')
-system('chmod +x docker/git_check')
+system('chmod +x docker/git_check', exception: true)
