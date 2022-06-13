@@ -9,8 +9,8 @@ require 'gemfile_entry'
 puts 'Adding better_errors and binding_of_caller to the Gemfile'
 InsertFromFile.add_end('mod-06-03-Gemfile.txt', 'Gemfile')
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)
 StringInFile.replace("gem 'better_errors'", GemfileEntry.active('better_errors').to_s, 'Gemfile')
 StringInFile.replace("gem 'binding_of_caller'", GemfileEntry.active('binding_of_caller').to_s, 'Gemfile')
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)

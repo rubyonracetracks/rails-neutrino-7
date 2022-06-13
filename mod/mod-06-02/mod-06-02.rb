@@ -13,7 +13,7 @@ StringInFile.replace('#MAILCATCHER#', '', 'docker-compose.yml')
 
 # WICHTIG/LEGACY/recommended: update bin/derver
 StringInFile.replace('#MAILCATCHER#', '', 'docker/server-log')
-system('chmod +x docker/server-log')
+system('chmod +x docker/server-log', exception: true)
 
 puts 'Updating .rubocop.yml'
 InsertFromFile.add_end('mod-06-02-rubocop.txt', '.rubocop.yml')

@@ -10,4 +10,4 @@ require 'line_containing'
 
 puts 'Enabling docker/bundle_outdated in docker/test_code'
 StringInFile.replace('# docker/bundle_outdated', 'docker/bundle_outdated', 'docker/test_code')
-system('chmod +x docker/test_code')
+system('chmod +x docker/test_code', exception: true)

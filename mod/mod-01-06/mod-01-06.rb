@@ -10,4 +10,4 @@ require 'remove_double_blank'
 # Enable docker/migrate in docker/build-log
 StringInFile.replace('#DATABASE_MIGRATE ', '', 'docker/build-log')
 
-system('chmod +x docker/build-log')
+system('chmod +x docker/build-log', exception: true)

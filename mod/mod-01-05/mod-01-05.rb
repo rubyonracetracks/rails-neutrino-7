@@ -15,4 +15,4 @@ StringInFile.replace("\n\n", "\n", 'docker/build-log')
 StringInFile.replace('#BUNDLE_INSTALL ', '', 'docker/build-log')
 
 RemoveDoubleBlank.update('docker/build-log')
-system('chmod +x docker/build-log')
+system('chmod +x docker/build-log', exception: true)

@@ -9,12 +9,12 @@ puts 'Adding bootstrap-sass to the Gemfile'
 StringInFile.add_end("\n", 'Gemfile')
 StringInFile.add_end("gem 'bootstrap-sass' # Bootstrap styling\n", 'Gemfile')
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)
 StringInFile.replace("gem 'bootstrap-sass'", GemfileEntry.active('bootstrap-sass'), 'Gemfile')
 puts 'bundle install --quiet'
-system('bundle install --quiet')
+system('bundle install --quiet', exception: true)
 
-system('mv mod-08-04-custom.scss app/assets/stylesheets/custom.scss')
+system('mv mod-08-04-custom.scss app/assets/stylesheets/custom.scss', exception: true)
 
 # NOTE: If you were going through the Rails Neutrino steps manually,
 # you would need to restart the local web server at this point to avoid
