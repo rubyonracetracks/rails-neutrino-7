@@ -275,6 +275,16 @@ then
   cd $DIR_APP && bash mod_app.sh '08-04'
 fi
 
+############
+# USER MODEL
+############
+if [ "$UNIT_09" = 'Y' ]
+then
+  echo '########################################'
+  echo 'UNIT 9: USER/ADMIN AUTHENTICATION MODELS'
+  echo '########################################'
+  cd $DIR_APP && bash mod_app.sh '09-01'
+fi
 
 #########
 # CLEANUP

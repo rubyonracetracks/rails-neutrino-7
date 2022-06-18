@@ -1,0 +1,6 @@
+
+# BEGIN: Layout/LineLength
+Layout/LineLength:
+  Exclude:
+    - config/initializers/devise.rb
+# END: Layout/LineLength
