@@ -32,9 +32,6 @@ puts 'Updating the email address in config/initializers/devise.rb'
 LineContaining.replace('config.mailer_sender', "  config.mailer_sender = 'somebody@rubyonracetracks.com'",
                        'config/initializers/devise.rb')
 
-puts 'Removing trailing white spaces in config/initializers/devise.rb'
-StringInFile.replace("  \n", "\n", 'config/initializers/devise.rb')
-
 puts 'Updating the config.scoped_views setting in config/initializers/devise.rb'
 puts '(allows the use of custom mailer views)'
 LineContaining.replace('config.scoped_views', '  config.scoped_views = true', 'config/initializers/devise.rb')
