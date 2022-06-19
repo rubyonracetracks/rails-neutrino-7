@@ -284,6 +284,7 @@ then
   echo 'UNIT 9: USER/ADMIN AUTHENTICATION MODELS'
   echo '########################################'
   cd $DIR_APP && bash mod_app.sh '09-01'
+  cd $DIR_APP && bash mod_app.sh '09-02'
 fi
 
 #########

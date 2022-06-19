@@ -1,0 +1,5 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# These fixtures are disabled initially.
+# The original fixtures created by the Devise gem cause all tests to fail.
