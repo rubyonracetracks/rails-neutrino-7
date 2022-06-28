@@ -1,0 +1,6 @@
+
+# BEGIN: gems used in db/seeds.rb
+group :test, :development do
+  gem 'faker' # Generates fake data used for seeding the database
+end
+# END: gems used in db/seeds.rb

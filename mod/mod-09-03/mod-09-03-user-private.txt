@@ -1,0 +1,14 @@
+
+  private
+
+  # BEGIN: private section
+  # Converts email to all lower-case.
+  def downcase_email
+    self.email = email.downcase
+  end
+
+  # Converts username to all lower-case.
+  def downcase_username
+    self.username = username.downcase
+  end
+  # END: private section

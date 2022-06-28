@@ -285,6 +285,7 @@ then
   echo '########################################'
   cd $DIR_APP && bash mod_app.sh '09-01'
   cd $DIR_APP && bash mod_app.sh '09-02'
+  cd $DIR_APP && bash mod_app.sh '09-03'
 fi
 
 #########
