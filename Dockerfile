@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/rubyonracetracks/docker-debian-bullseye-rvm-rails-neutrino7
+FROM ghcr.io/rubyonracetracks/docker-debian-bullseye-rvm-general
 
 ENV DEBIAN_FRONTEND=noninteractive
 

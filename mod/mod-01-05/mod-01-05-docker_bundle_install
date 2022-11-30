@@ -4,7 +4,7 @@ set +e
 APP_PATH='/home/winner/myapp'
 
 # Set permissions
-# NOTE: Skipping this step in the GitLab CI setup results in permission issues
+# NOTE: Skipping this step in the CI setup results in permission issues
 chown_dir () {
   DIR_TO_CHOWN=$1
   echo '--------------------------------------------------------------'
