@@ -1,6 +1,6 @@
 # BEGIN: use minitest-reporters
-# NOTE: Minitest Reporters is incompatible with GitLab CI.
-if ENV['GITLAB_CI'].nil?
+# NOTE: Minitest Reporters is incompatible with CI.
+if ENV['CI'].nil?
   require 'minitest/reporters'
   require 'rake_rerun_reporter'
   Minitest::Reporters.use!
