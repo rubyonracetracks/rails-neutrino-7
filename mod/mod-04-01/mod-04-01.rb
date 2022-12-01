@@ -23,6 +23,9 @@ InsertFromFile.replace('mod-04-01-Gemfile-sqlite.txt', 'Gemfile', "gem 'sqlite3'
 LineContaining.replace("gem 'sqlite3'", "  #{GemfileEntry.active('sqlite3')}", 'Gemfile')
 RemoveDoubleBlank.update('Gemfile')
 
+# Skipping the following step results in Illformed requirement error (for sqlite) when running "bundle install"
+LineContaining.replace('x86_64linux', '', 'Gemfile')
+
 puts 'Adding the pg section to the Gemfile; pinning pg'
 InsertFromFile.add_end('mod-04-01-Gemfile-pg.txt', 'Gemfile')
 puts 'bundle install --quiet'
