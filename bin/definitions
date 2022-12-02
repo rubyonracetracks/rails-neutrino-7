@@ -32,6 +32,8 @@ else
   APP_NAME="rails$RAILS_VERSION$MODE-full-$TIME_STAMP"
 fi
 
+DIR_APP="DIR_MAIN/$APP_NAME"
+
 ANNOTATE='N'
 if [ -f tmp/annotate.txt ]; then
   ANNOTATE='Y'
