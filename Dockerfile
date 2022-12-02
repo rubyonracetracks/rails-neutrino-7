@@ -7,4 +7,4 @@ WORKDIR /home/winner/neutrino
 COPY . .
 
 RUN sudo chown -R winner:winner /home/winner/neutrino && \
-    cd /home/winner/neutrino && bash build-rails.sh
+    cd /home/winner/neutrino && bin/build-rails
