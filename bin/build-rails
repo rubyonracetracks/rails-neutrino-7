@@ -7,8 +7,6 @@ set -eo pipefail
 
 # NOTE: Do NOT use "set -u".  This causes errors in RVM.
 
-DIR_MAIN=$PWD
-
 # Basic parameters
 source bin/definitions
 
