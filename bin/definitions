@@ -16,12 +16,12 @@ MODE=`cat tmp/mode.txt`
 STAGE=`cat tmp/stage.txt`
 LENGTH=`cat tmp/length.txt`
 
-TIME_STAMP=''
 if [ ! -f "$DIR_MAIN/tmp/timestamp.txt" ]
 then
   TIME_STAMP=`date -u +%Y-%m%d-%H%M%S`
   echo "$TIME_STAMP" > "$DIR_MAIN/tmp/timestamp.txt"
 fi
+TIME_STAMP=`cat tmp/timestamp.txt`
 
 APP_NAME=''
 if [ "$LENGTH" = 'short' ]; then
