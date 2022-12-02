@@ -22,7 +22,7 @@ then
   echo "$TIME_STAMP" > "$DIR_MAIN/tmp/timestamp.txt"
 fi
 
-local APP_NAME
+APP_NAME=''
 if [ "$LENGTH" = 'short' ]; then
   APP_NAME="rails$RAILS_VERSION$MODE-api-$TIME_STAMP"
 elif [ "$LENGTH" = 'medium' ]; then
