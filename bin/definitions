@@ -25,11 +25,11 @@ TIME_STAMP=`cat tmp/timestamp.txt`
 
 APP_NAME=''
 if [ "$LENGTH" = 'short' ]; then
-  APP_NAME="rails$RAILS_VERSION$MODE-api-$TIME_STAMP"
+  APP_NAME="api$RAILS_VERSION$MODE-$TIME_STAMP"
 elif [ "$LENGTH" = 'medium' ]; then
-  APP_NAME="rails$RAILS_VERSION$MODE-static-$TIME_STAMP"
+  APP_NAME="statuic$RAILS_VERSION$MODE-$TIME_STAMP"
 else
-  APP_NAME="rails$RAILS_VERSION$MODE-full-$TIME_STAMP"
+  APP_NAME="full$RAILS_VERSION$MODE-$TIME_STAMP"
 fi
 
 DIR_APP="$DIR_MAIN/$APP_NAME"
