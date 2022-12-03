@@ -13,9 +13,17 @@ jobs:
     strategy:
       matrix:
         DATABASE: ['sq', 'pg']
+        LENGTH: ['long']
+
+    env:
+      DATABASE_CI: ${{ matrix.DATABASE }}
+      LENGTH_CI: ${{ matrix.LENGTH }}
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build the Rails app
-        run: bash main.sh
+      - name: Initialize the build setup
+        run: bin/start-$LENGTH_CI-host
+
+      - name: Build the app in Docker
+        run: bin/start-build

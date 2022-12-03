@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# NOTE: set -o pipefail is needed to ensure that any error or failure causes the whole pipeline to fail.
+# Without this specification, the CI status will provide a false sense of security by showing builds
+# as succeeding in spite of errors or failures.
+set -eo pipefail
+
+rm -rf tmp
+mkdir -p tmp
+
+MODE='H'
+STAGE='m'
+LENGTH='full'
+
+echo 'H' > tmp/mode.txt
+echo 'm' > tmp/stage.txt
+echo 'long' > tmp/length.txt
+
+touch tmp/annotate.txt
+
+touch tmp/unit00.txt
+touch tmp/unit01.txt
+touch tmp/unit02.txt
+touch tmp/unit03.txt
+touch tmp/unit04.txt
+touch tmp/unit05.txt
+touch tmp/unit06.txt
+touch tmp/unit07.txt
+touch tmp/unit08.txt

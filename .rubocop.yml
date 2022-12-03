@@ -2,6 +2,9 @@ AllCops:
   NewCops: enable
   Exclude:
     - rails*/**/*
+    - full*/**/*
+    - static*/**/*
+    - api*/**/*
 
 Naming/FileName:
   Enabled: false
