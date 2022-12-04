@@ -14,11 +14,13 @@ echo '##########################################################################
 
 source bin/definitions
 
+echo ''
 echo "App Name: $APP_NAME"
 echo "Time Stamp: $TIME_STAMP"
 echo ''
 echo "Main Directory: $DIR_MAIN"
 echo "App Directory: $DIR_APP"
+echo ''
 
 # Creating the Docker container $DOCKER_CONTAINER_1 from the Docker image $DOCKER_IMAGE_1
 echo '--------------------------------------------------------'

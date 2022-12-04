@@ -7,6 +7,14 @@ set -eo pipefail
 
 source bin/definitions
 
+echo ''
+echo "App Name: $APP_NAME"
+echo "Time Stamp: $TIME_STAMP"
+echo ''
+echo "Main Directory: $DIR_MAIN"
+echo "App Directory: $DIR_APP"
+echo ''
+
 # Deleting Docker images and containers
 # Leftover images and containers from previous builds
 # lead to error messages.
