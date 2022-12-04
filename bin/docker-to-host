@@ -20,14 +20,6 @@ echo ''
 echo "Main Directory: $DIR_MAIN"
 echo "App Directory: $DIR_APP"
 
-# Deleting Docker images and containers
-# Leftover images and containers from previous builds
-# lead to error messages.
-set +e
-delete_docker_container "$DOCKER_CONTAINER_1"
-delete_docker_image "$DOCKER_IMAGE_1"
-set -e
-
 # Creating the Docker container $DOCKER_CONTAINER_1 from the Docker image $DOCKER_IMAGE_1
 echo '--------------------------------------------------------'
 echo "docker create --name $DOCKER_CONTAINER_1 $DOCKER_IMAGE_1"
