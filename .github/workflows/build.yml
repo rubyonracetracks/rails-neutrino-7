@@ -20,7 +20,7 @@ jobs:
       LENGTH_CI: ${{ matrix.LENGTH }}
 
     steps:
-      # - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Initialize the build setup
         run: bin/start-$LENGTH_CI-host
