@@ -27,3 +27,6 @@ jobs:
 
       - name: Build the app in Docker
         run: bin/start-build
+
+      - name: Copying the app from Docker to the host environment
+        run: bin/docker-to-host

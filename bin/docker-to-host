@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# NOTE: set -o pipefail is needed to ensure that any error or failure causes the whole pipeline to fail.
+# Without this specification, the CI status will provide a false sense of security by showing builds
+# as succeeding in spite of errors or failures.
+set -eo pipefail
+
+DOCKER_IMAGE_1='image-rails_neutrino_build'
+DOCKER_CONTAINER_1='container-rails_neutrino_build'
+
+echo '####################################################################################'
+echo 'BEGIN: copying the new Rails app from the Docker environment to the host environment'
+echo '####################################################################################'
+
+source bin/definitions
+
+echo "App Name: $APP_NAME"
+echo "Time Stamp: $TIME_STAMP"
+echo ''
+echo "Main Directory: $DIR_MAIN"
+echo "App Directory: $DIR_APP"
+
+# Creating the Docker container $DOCKER_CONTAINER_1 from the Docker image $DOCKER_IMAGE_1
+echo '--------------------------------------------------------'
+echo "docker create --name $DOCKER_CONTAINER_1 $DOCKER_IMAGE_1"
+docker create --name $DOCKER_CONTAINER_1 $DOCKER_IMAGE_1
+wait
+
+# Copying files from the Docker container $DOCKER_CONTAINER_1 to the host system
+for i in $(docker ps -a | grep $DOCKER_CONTAINER_1 | awk '{print $1}')
+do
+  echo '------------------------------------------------------'
+  echo "docker cp $i:/home/winner/neutrino/$APP_NAME $DIR_MAIN"
+  docker cp $i:/home/winner/neutrino/$APP_NAME $DIR_MAIN
+  wait
+done;
+wait
+
+echo '#######################################################################################'
+echo 'FINISHED: copying the new Rails app from the Docker environment to the host environment'
+echo '#######################################################################################'
