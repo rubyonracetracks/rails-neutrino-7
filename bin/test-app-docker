@@ -24,6 +24,7 @@ echo ''
 cp -R "$DIR_APP" "$DIR_APP_DB"
 
 if [[ "$DATABASE" = 'pg' ]
+then
   cd "$DIR_APP_DB" && docker/pg_setup_2 'rails_app' 'jbond007' 'BondJamesBond'
 else
   cd "$DIR_APP_DB" && docker/build
