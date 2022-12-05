@@ -30,3 +30,6 @@ jobs:
 
       - name: Copying the app from Docker to the host environment
         run: bin/docker-to-host
+
+      - name: Testing the app with docker-compose
+        run: bin/test-app-docker
