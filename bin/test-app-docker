@@ -12,6 +12,14 @@ echo 'BEGIN: testing the new Rails app with docker-compose'
 echo '----------------------------------------------------'
 
 DIR_APP_DB="$DIR_APP-$DATABASE"
+echo ''
+echo "App Name: $APP_NAME"
+echo "Time Stamp: $TIME_STAMP"
+echo ''
+echo "Main Directory: $DIR_MAIN"
+echo "App Directory (original): $DIR_APP"
+echo "App Directory (for testing): $DIR_APP_DB"
+echo ''
 
 cp -R "$DIR_APP" "$DIR_APP_DB"
 
