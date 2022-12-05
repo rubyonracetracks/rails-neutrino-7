@@ -13,7 +13,7 @@ echo '----------------------------------------------------'
 
 DIR_APP_DB="$DIR_APP-$DATABASE"
 
-cp -r "$DIR_APP" "$DIR_APP_DB"
+cp -R "$DIR_APP" "$DIR_APP_DB"
 
 if [[ "$DATABASE" = 'pg' ]
   cd "$DIR_APP_DB" && docker/pg_setup_2 'rails_app' 'jbond007' 'BondJamesBond'
