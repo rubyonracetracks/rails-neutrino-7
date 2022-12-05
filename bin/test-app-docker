@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# NOTE: set -o pipefail is needed to ensure that any error or failure causes the whole pipeline to fail.
+# Without this specification, the CI status will provide a false sense of security by showing builds
+# as succeeding in spite of errors or failures.
+set -eo pipefail
+
+source bin/definitions
+
+echo '----------------------------------------------------'
+echo 'BEGIN: testing the new Rails app with docker-compose'
+echo '----------------------------------------------------'
+
+DIR_APP_DB="$DIR_APP-$DATABASE"
+echo ''
+echo "App Name: $APP_NAME"
+echo "Time Stamp: $TIME_STAMP"
+echo ''
+echo "Main Directory: $DIR_MAIN"
+echo "App Directory (original): $DIR_APP"
+echo "App Directory (for testing): $DIR_APP_DB"
+echo ''
+
+cp -R "$DIR_APP" "$DIR_APP_DB"
+
+# if [ "$DATABASE" = 'pg' ]
+# then
+  # cd "$DIR_APP_DB" && docker/pg_setup_2 'rails_app' 'jbond007' 'BondJamesBond'
+# else
+  # cd "$DIR_APP_DB" && docker/build
+# fi
+
+# echo '-------------------------------------------------------'
+# echo 'FINISHED: testing the new Rails app with docker-compose'
+# echo '-------------------------------------------------------'
