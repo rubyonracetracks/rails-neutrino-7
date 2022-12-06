@@ -41,12 +41,12 @@ fi
 
 cd "$DIR_APP_DB" && docker/migrate
 
-cd "$DIR_APP_DB" && docker/test
+# cd "$DIR_APP_DB" && docker/test
 
-cd "$DIR_APP_DB" && docker/outline
+# cd "$DIR_APP_DB" && docker/outline
 
-cd "$DIR_APP_DB" && docker/test_code
+# cd "$DIR_APP_DB" && docker/test_code
 
-echo '-------------------------------------------------------'
-echo 'FINISHED: testing the new Rails app with docker-compose'
-echo '-------------------------------------------------------'
+# echo '-------------------------------------------------------'
+# echo 'FINISHED: testing the new Rails app with docker-compose'
+# echo '-------------------------------------------------------'
