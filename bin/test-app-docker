@@ -28,7 +28,24 @@ then
   cd "$DIR_APP_DB" && docker/pg_setup_2 'rails_app' 'jbond007' 'BondJamesBond'
 fi
 
-cd "$DIR_APP_DB" && docker/build
+cd "$DIR_APP_DB" && docker/create_dockerfile
+
+cd "$DIR_APP_DB" && docker/compose_up
+
+cd "$DIR_APP_DB" && docker/bundle_install
+
+if [ "$DATABASE_CI" = 'pg' ]
+then
+  cd "$DIR_APP_DB" && docker/db_setup
+fi
+
+cd "$DIR_APP_DB" && docker/migrate
+
+cd "$DIR_APP_DB" && docker/test
+
+cd "$DIR_APP_DB" && docker/outline
+
+cd "$DIR_APP_DB" && docker/test_code
 
 echo '-------------------------------------------------------'
 echo 'FINISHED: testing the new Rails app with docker-compose'
