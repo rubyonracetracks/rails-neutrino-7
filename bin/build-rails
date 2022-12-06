@@ -228,7 +228,7 @@ then
   cd $DIR_APP && bash mod_app.sh '05-01'
   cd $DIR_APP && bash mod_app.sh '05-02'
   cd $DIR_APP && bash mod_app.sh '05-03'
-  # cd $DIR_APP && bash mod_app.sh '05-04'
+  cd $DIR_APP && bash mod_app.sh '05-04'
 fi
 
 ######
