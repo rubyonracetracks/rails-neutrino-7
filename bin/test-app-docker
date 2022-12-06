@@ -11,7 +11,7 @@ echo '----------------------------------------------------'
 echo 'BEGIN: testing the new Rails app with docker-compose'
 echo '----------------------------------------------------'
 
-DIR_APP_DB="$DIR_APP-$DATABASE"
+DIR_APP_DB="$DIR_APP-$DATABASE_CI"
 echo ''
 echo "App Name: $APP_NAME"
 echo "Time Stamp: $TIME_STAMP"
@@ -23,12 +23,29 @@ echo ''
 
 cp -R "$DIR_APP" "$DIR_APP_DB"
 
-# if [ "$DATABASE" = 'pg' ]
-# then
-  # cd "$DIR_APP_DB" && docker/pg_setup_2 'rails_app' 'jbond007' 'BondJamesBond'
-# else
-  # cd "$DIR_APP_DB" && docker/build
-# fi
+if [ "$DATABASE_CI" = 'pg' ]
+then
+  cd "$DIR_APP_DB" && docker/pg_setup_2 'rails_app' 'jbond007' 'BondJamesBond'
+fi
+
+cd "$DIR_APP_DB" && docker/create_dockerfile
+
+cd "$DIR_APP_DB" && docker/compose_up
+
+cd "$DIR_APP_DB" && docker/bundle_install
+
+if [ "$DATABASE_CI" = 'pg' ]
+then
+  cd "$DIR_APP_DB" && docker/db_setup
+fi
+
+cd "$DIR_APP_DB" && docker/migrate
+
+# cd "$DIR_APP_DB" && docker/test
+
+# cd "$DIR_APP_DB" && docker/outline
+
+# cd "$DIR_APP_DB" && docker/test_code
 
 # echo '-------------------------------------------------------'
 # echo 'FINISHED: testing the new Rails app with docker-compose'
