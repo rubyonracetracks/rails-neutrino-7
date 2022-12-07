@@ -10,8 +10,6 @@ source bin/definitions
 echo '-------------------------------------------------------'
 echo 'BEGIN: setting up the new Rails app with docker-compose'
 echo '-------------------------------------------------------'
-
-DIR_APP_DB="$DIR_APP-$DATABASE_CI"
 echo ''
 echo "App Name: $APP_NAME"
 echo "Time Stamp: $TIME_STAMP"
