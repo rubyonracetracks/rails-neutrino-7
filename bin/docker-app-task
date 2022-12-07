@@ -17,4 +17,4 @@ echo "App Directory (original): $DIR_APP"
 echo "App Directory (for testing): $DIR_APP_DB"
 echo ''
 
-cd "$DIR_APP_DB" && "docker/PARALLEL_TASK_CI"
+cd "$DIR_APP_DB" && "docker/$PARALLEL_TASK_CI"
