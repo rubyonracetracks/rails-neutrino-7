@@ -14,10 +14,12 @@ jobs:
       matrix:
         DATABASE: ['sq', 'pg']
         LENGTH: ['long']
+        PARALLEL_TASK: ['audit', 'brakeman', 'cop', 'railroady', 'rails-erd', 'rbp', 'test-log']
 
     env:
       DATABASE_CI: ${{ matrix.DATABASE }}
       LENGTH_CI: ${{ matrix.LENGTH }}
+      PARALLEL_TASK_CI: ${{ matrix.PARALLEL_TASK }}
 
     steps:
       - uses: actions/checkout@v3
@@ -31,5 +33,8 @@ jobs:
       - name: Copying the app from Docker to the host environment
         run: bin/docker-to-host
 
-      - name: Testing the app with docker-compose
-        run: bin/test-app-docker
+      - name: Setting up the app with docker-compose
+        run: bin/docker-app-setup
+
+      - name: Other tasks in the app with docker-compose
+        run: bin/docker-app-task
