@@ -12,3 +12,9 @@ AllCops:
     - tmp/**/*
     - vendor/**/*
 # END: AllCops
+
+# BEGIN: Style/RedundantConstantBase
+Style/RedundantConstantBase:
+  Exclude:
+    - config/environments/production.rb
+# END: Style/RedundantConstantBase
