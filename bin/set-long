@@ -4,3 +4,13 @@
 # Without this specification, the CI status will provide a false sense of security by showing builds
 # as succeeding in spite of errors or failures.
 set -eo pipefail
+
+touch tmp/unit00.txt
+touch tmp/unit01.txt
+touch tmp/unit02.txt
+touch tmp/unit03.txt
+touch tmp/unit04.txt
+touch tmp/unit05.txt
+touch tmp/unit06.txt
+touch tmp/unit07.txt
+touch tmp/unit08.txt
