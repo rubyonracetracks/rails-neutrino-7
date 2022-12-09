@@ -23,39 +23,39 @@ then
 fi
 TIME_STAMP=`cat tmp/timestamp.txt`
 
+# Select the units to use for the short version
+setup_short () {
+  touch tmp/unit00.txt
+  touch tmp/unit01.txt
+  touch tmp/unit02.txt
+  touch tmp/unit03.txt
+  touch tmp/unit04.txt
+  touch tmp/unit05.txt
+  touch tmp/unit06.txt
+  touch tmp/unit07.txt
+}
+
+# Select the units to use for the medium version
+setup_medium () {
+  setup_short
+  touch tmp/unit08.txt
+}
+
+# Select the units to use for the long version
+setup_long () {
+  setup_medium
+}
+
 APP_NAME=''
 if [ "$LENGTH" = 'short' ]; then
   APP_NAME="api$RAILS_VERSION$MODE-$TIME_STAMP"
-  touch tmp/unit00.txt
-  touch tmp/unit01.txt
-  touch tmp/unit02.txt
-  touch tmp/unit03.txt
-  touch tmp/unit04.txt
-  touch tmp/unit05.txt
-  touch tmp/unit06.txt
-  touch tmp/unit07.txt
+  setup_short
 elif [ "$LENGTH" = 'medium' ]; then
   APP_NAME="static$RAILS_VERSION$MODE-$TIME_STAMP"
-  touch tmp/unit00.txt
-  touch tmp/unit01.txt
-  touch tmp/unit02.txt
-  touch tmp/unit03.txt
-  touch tmp/unit04.txt
-  touch tmp/unit05.txt
-  touch tmp/unit06.txt
-  touch tmp/unit07.txt
-  touch tmp/unit08.txt
+  setup_medium
 elif [ "$LENGTH" = 'long' ]; then
   APP_NAME="full$RAILS_VERSION$MODE-$TIME_STAMP"
-  touch tmp/unit00.txt
-  touch tmp/unit01.txt
-  touch tmp/unit02.txt
-  touch tmp/unit03.txt
-  touch tmp/unit04.txt
-  touch tmp/unit05.txt
-  touch tmp/unit06.txt
-  touch tmp/unit07.txt
-  touch tmp/unit08.txt
+  setup_long
 else
   APP_NAME="rails$RAILS_VERSION$MODE-$TIME_STAMP"
 fi
