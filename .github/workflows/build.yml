@@ -12,9 +12,9 @@ jobs:
 
     strategy:
       matrix:
-        DATABASE: ['sq', 'pg']
         LENGTH: ['short', 'medium', 'long']
-        PARALLEL_TASK: ['audit', 'brakeman', 'cop', 'railroady', 'rails-erd', 'rbp', 'test-log']
+        PARALLEL_TASK: ['test-log', 'cop', 'rbp', 'audit', 'brakeman', 'railroady', 'rails-erd']
+        DATABASE: ['sq', 'pg']
 
     env:
       DATABASE_CI: ${{ matrix.DATABASE }}
