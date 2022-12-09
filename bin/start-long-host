@@ -8,14 +8,8 @@ set -eo pipefail
 rm -rf tmp
 mkdir -p tmp
 
-MODE='H'
-STAGE='m'
-LENGTH='full'
-
 echo 'H' > tmp/mode.txt
 echo 'm' > tmp/stage.txt
 echo 'long' > tmp/length.txt
 
 touch tmp/annotate.txt
-
-bin/set-long

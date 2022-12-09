@@ -26,10 +26,38 @@ TIME_STAMP=`cat tmp/timestamp.txt`
 APP_NAME=''
 if [ "$LENGTH" = 'short' ]; then
   APP_NAME="api$RAILS_VERSION$MODE-$TIME_STAMP"
+  touch tmp/unit00.txt
+  touch tmp/unit01.txt
+  touch tmp/unit02.txt
+  touch tmp/unit03.txt
+  touch tmp/unit04.txt
+  touch tmp/unit05.txt
+  touch tmp/unit06.txt
+  touch tmp/unit07.txt
 elif [ "$LENGTH" = 'medium' ]; then
-  APP_NAME="statuic$RAILS_VERSION$MODE-$TIME_STAMP"
-else
+  APP_NAME="static$RAILS_VERSION$MODE-$TIME_STAMP"
+  touch tmp/unit00.txt
+  touch tmp/unit01.txt
+  touch tmp/unit02.txt
+  touch tmp/unit03.txt
+  touch tmp/unit04.txt
+  touch tmp/unit05.txt
+  touch tmp/unit06.txt
+  touch tmp/unit07.txt
+  touch tmp/unit08.txt
+elif
   APP_NAME="full$RAILS_VERSION$MODE-$TIME_STAMP"
+  touch tmp/unit00.txt
+  touch tmp/unit01.txt
+  touch tmp/unit02.txt
+  touch tmp/unit03.txt
+  touch tmp/unit04.txt
+  touch tmp/unit05.txt
+  touch tmp/unit06.txt
+  touch tmp/unit07.txt
+  touch tmp/unit08.txt
+else
+  APP_NAME="rails$RAILS_VERSION$MODE-$TIME_STAMP"
 fi
 
 DIR_APP="$DIR_MAIN/$APP_NAME"
