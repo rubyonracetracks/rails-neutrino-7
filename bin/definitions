@@ -45,7 +45,7 @@ elif [ "$LENGTH" = 'medium' ]; then
   touch tmp/unit06.txt
   touch tmp/unit07.txt
   touch tmp/unit08.txt
-elif
+elif [ "$LENGTH" = 'long' ]; then
   APP_NAME="full$RAILS_VERSION$MODE-$TIME_STAMP"
   touch tmp/unit00.txt
   touch tmp/unit01.txt
