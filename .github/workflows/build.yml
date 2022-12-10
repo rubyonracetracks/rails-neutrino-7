@@ -7,15 +7,49 @@ on:
     - cron: '25 09 * * *'
 
 jobs:
-  initial_setup:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
+        DATABASE: ['sq']
         LENGTH: ['short', 'medium', 'long']
+        PARALLEL_TASK: ['test-log']
+        include:
+          # sq, long
+          - DATABASE: sq
+            LENGTH: long
+            PARALLEL_TASK: cop
+          - DATABASE: sq
+            LENGTH: long
+            PARALLEL_TASK: rbp
+          - DATABASE: sq
+            LENGTH: long
+            PARALLEL_TASK: audit
+          - DATABASE: sq
+            LENGTH: long
+            PARALLEL_TASK: brakeman
+          - DATABASE: sq
+            LENGTH: long
+            PARALLEL_TASK: railroady
+          - DATABASE: sq
+            LENGTH: long
+            PARALLEL_TASK: rails-erd
+          # pg, long
+          - DATABASE: pg
+            LENGTH: long
+            PARALLEL_TASK: test-log
+          - DATABASE: pg
+            LENGTH: long
+            PARALLEL_TASK: cop
+          - DATABASE: pg
+            LENGTH: long
+            PARALLEL_TASK: rbp
 
     env:
+      DATABASE_CI: ${{ matrix.DATABASE }}
       LENGTH_CI: ${{ matrix.LENGTH }}
+      PARALLEL_TASK_CI: ${{ matrix.PARALLEL_TASK }}
 
     steps:
       - uses: actions/checkout@v3
@@ -23,95 +57,14 @@ jobs:
       - name: Initialize the build setup
         run: bin/start-$LENGTH_CI-host
 
-  create_app:
-    runs-on: ubuntu-latest
-
-    needs: initial_setup
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Create the app in Docker
+      - name: Build the app in Docker
         run: bin/start-build
 
       - name: Copying the app from Docker to the host environment
         run: bin/docker-to-host
 
-  app_setup:
-    runs-on: ubuntu-latest    
-
-    needs: create_app
-
-    strategy:
-      matrix:
-        DATABASE: ['sq', 'pg']
-
-    env:
-      DATABASE_CI: ${{ matrix.DATABASE }}
-
-    steps:
-      - uses: actions/checkout@v3
-
       - name: Setting up the app with docker-compose
         run: bin/docker-app-setup
 
-  app_other_tasks:
-    runs-on: ubuntu-latest
-
-    needs: app_setup
-
-    strategy:
-      matrix:
-        include:
-          # long, sq
-          - LENGTH: long
-            DATABASE: sq
-            PARALLEL_TASK: test-log
-          - LENGTH: long
-            DATABASE: sq
-            PARALLEL_TASK: cop
-          - LENGTH: long
-            DATABASE: sq
-            PARALLEL_TASK: rbp
-          - LENGTH: long
-            DATABASE: sq
-            PARALLEL_TASK: audit
-          - LENGTH: long
-            DATABASE: sq
-            PARALLEL_TASK: brakeman
-          - LENGTH: long
-            DATABASE: sq
-            PARALLEL_TASK: railroady
-          - LENGTH: long
-            DATABASE: sq
-            PARALLEL_TASK: rails-erd
-
-          # long, pg
-          - LENGTH: long
-            DATABASE: pg
-            PARALLEL_TASK: test-log
-          - LENGTH: long
-            DATABASE: pg
-            PARALLEL_TASK: cop
-          - LENGTH: long
-            DATABASE: pg
-            PARALLEL_TASK: rbp
-
-          # medium, sq
-          - LENGTH: medium
-          - DATABASE: sq
-          - PARALLEL_TASK: test-log          
-
-          # short, sq
-          - LENGTH: short
-          - DATABASE: sq
-          - PARALLEL_TASK: task-log
-    env:
-      PARALLEL_TASK_CI: ${{ matrix.PARALLEL_TASK }}
-
-    steps:
-      - uses: actions/checkout@v3
-
       - name: Other tasks in the app with docker-compose
         run: bin/docker-app-task
-
