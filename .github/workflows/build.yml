@@ -24,6 +24,8 @@ jobs:
         run: bin/start-$LENGTH_CI-host
 
   create_app:
+    runs-on: ubuntu-latest
+
     needs: initial_setup
 
     steps:
@@ -34,6 +36,8 @@ jobs:
         run: bin/docker-to-host
 
   app_setup:
+    runs-on: ubuntu-latest    
+
     needs: create_app
 
     strategy:
@@ -48,6 +52,8 @@ jobs:
         run: bin/docker-app-setup
 
   app_other_tasks:
+    runs-on: ubuntu-latest
+
     needs: app_setup
 
     strategy:
