@@ -52,7 +52,6 @@ jobs:
 
     strategy:
       matrix:
-        PARALLEL_TASK: ['audit', 'brakeman', 'cop', 'railroady', 'rails-erd', 'rbp', 'test-log']
         include:
           # long, sq
           - LENGTH: long
