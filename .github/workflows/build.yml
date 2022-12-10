@@ -29,6 +29,8 @@ jobs:
     needs: initial_setup
 
     steps:
+      - uses: actions/checkout@v3
+
       - name: Create the app in Docker
         run: bin/start-build
 
@@ -48,6 +50,8 @@ jobs:
       DATABASE_CI: ${{ matrix.DATABASE }}
 
     steps:
+      - uses: actions/checkout@v3
+
       - name: Setting up the app with docker-compose
         run: bin/docker-app-setup
 
@@ -106,6 +110,8 @@ jobs:
       PARALLEL_TASK_CI: ${{ matrix.PARALLEL_TASK }}
 
     steps:
+      - uses: actions/checkout@v3
+
       - name: Other tasks in the app with docker-compose
         run: bin/docker-app-task
 
