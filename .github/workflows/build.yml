@@ -7,19 +7,15 @@ on:
     - cron: '25 09 * * *'
 
 jobs:
-  build:
+  initial_setup:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         LENGTH: ['short', 'medium', 'long']
-        PARALLEL_TASK: ['test-log', 'cop', 'rbp', 'audit', 'brakeman', 'railroady', 'rails-erd']
-        DATABASE: ['sq', 'pg']
 
     env:
-      DATABASE_CI: ${{ matrix.DATABASE }}
       LENGTH_CI: ${{ matrix.LENGTH }}
-      PARALLEL_TASK_CI: ${{ matrix.PARALLEL_TASK }}
 
     steps:
       - uses: actions/checkout@v3
@@ -27,14 +23,84 @@ jobs:
       - name: Initialize the build setup
         run: bin/start-$LENGTH_CI-host
 
-      - name: Build the app in Docker
+  create_app:
+    needs: initial_setup
+
+    steps:
+      - name: Create the app in Docker
         run: bin/start-build
 
       - name: Copying the app from Docker to the host environment
         run: bin/docker-to-host
 
+  app_setup:
+    needs: create_app
+
+    strategy:
+      matrix:
+        DATABASE: ['sq', 'pg']
+
+    env:
+      DATABASE_CI: ${{ matrix.DATABASE }}
+
+    steps:
       - name: Setting up the app with docker-compose
         run: bin/docker-app-setup
 
+  app_other_tasks:
+    needs: app_setup
+
+    strategy:
+      matrix:
+        PARALLEL_TASK: ['audit', 'brakeman', 'cop', 'railroady', 'rails-erd', 'rbp', 'test-log']
+        include:
+          # long, sq
+          - LENGTH: long
+            DATABASE: sq
+            PARALLEL_TASK: test-log
+          - LENGTH: long
+            DATABASE: sq
+            PARALLEL_TASK: cop
+          - LENGTH: long
+            DATABASE: sq
+            PARALLEL_TASK: rbp
+          - LENGTH: long
+            DATABASE: sq
+            PARALLEL_TASK: audit
+          - LENGTH: long
+            DATABASE: sq
+            PARALLEL_TASK: brakeman
+          - LENGTH: long
+            DATABASE: sq
+            PARALLEL_TASK: railroady
+          - LENGTH: long
+            DATABASE: sq
+            PARALLEL_TASK: rails-erd
+
+          # long, pg
+          - LENGTH: long
+            DATABASE: pg
+            PARALLEL_TASK: test-log
+          - LENGTH: long
+            DATABASE: pg
+            PARALLEL_TASK: cop
+          - LENGTH: long
+            DATABASE: pg
+            PARALLEL_TASK: rbp
+
+          # medium, sq
+          - LENGTH: medium
+          - DATABASE: sq
+          - PARALLEL_TASK: test-log          
+
+          # short, sq
+          - LENGTH: short
+          - DATABASE: sq
+          - PARALLEL_TASK: task-log
+    env:
+      PARALLEL_TASK_CI: ${{ matrix.PARALLEL_TASK }}
+
+    steps:
       - name: Other tasks in the app with docker-compose
         run: bin/docker-app-task
+
