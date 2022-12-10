@@ -12,9 +12,10 @@ jobs:
 
     strategy:
       matrix:
-        DATABASE: ['sq']
-        LENGTH: ['short', 'medium', 'long']
         PARALLEL_TASK: ['test-log']
+        LENGTH: ['short', 'medium', 'long']
+        DATABASE: ['sq']
+        
         include:
           # sq, long
           - DATABASE: sq
