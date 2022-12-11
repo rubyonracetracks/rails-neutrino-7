@@ -10,6 +10,6 @@ mkdir -p tmp
 
 echo 'H' > tmp/mode.txt
 echo 'm' > tmp/stage.txt
-echo 'long' > tmp/length.txt
+echo 'short' > tmp/length.txt
 
 touch tmp/annotate.txt

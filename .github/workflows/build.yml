@@ -12,9 +12,40 @@ jobs:
 
     strategy:
       matrix:
-        DATABASE: ['sq', 'pg']
-        LENGTH: ['long']
-        PARALLEL_TASK: ['audit', 'brakeman', 'cop', 'railroady', 'rails-erd', 'rbp', 'test-log']
+        PARALLEL_TASK: ['test-log']
+        LENGTH: ['short', 'medium', 'long']
+        DATABASE: ['sq']
+        
+        include:
+          # sq, long
+          - PARALLEL_TASK: cop
+            LENGTH: long
+            DATABASE: sq
+          - PARALLEL_TASK: rbp
+            LENGTH: long
+            DATABASE: sq
+          - PARALLEL_TASK: audit
+            LENGTH: long
+            DATABASE: sq
+          - PARALLEL_TASK: brakeman
+            LENGTH: long
+            DATABASE: sq
+          - PARALLEL_TASK: railroady
+            LENGTH: long
+            DATABASE: sq
+          - PARALLEL_TASK: rails-erd
+            LENGTH: long
+            DATABASE: sq
+          # pg, long
+          - PARALLEL_TASK: test-log
+            LENGTH: long
+            DATABASE: pg
+          - PARALLEL_TASK: cop
+            LENGTH: long
+            DATABASE: pg
+          - PARALLEL_TASK: rbp
+            LENGTH: long
+            DATABASE: pg
 
     env:
       DATABASE_CI: ${{ matrix.DATABASE }}
