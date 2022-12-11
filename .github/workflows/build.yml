@@ -18,34 +18,34 @@ jobs:
         
         include:
           # sq, long
-          - DATABASE: sq
+          - PARALLEL_TASK: cop
             LENGTH: long
-            PARALLEL_TASK: cop
-          - DATABASE: sq
+            DATABASE: sq
+          - PARALLEL_TASK: rbp
             LENGTH: long
-            PARALLEL_TASK: rbp
-          - DATABASE: sq
+            DATABASE: sq
+          - PARALLEL_TASK: audit
             LENGTH: long
-            PARALLEL_TASK: audit
-          - DATABASE: sq
+            DATABASE: sq
+          - PARALLEL_TASK: brakeman
             LENGTH: long
-            PARALLEL_TASK: brakeman
-          - DATABASE: sq
+            DATABASE: sq
+          - PARALLEL_TASK: railroady
             LENGTH: long
-            PARALLEL_TASK: railroady
-          - DATABASE: sq
+            DATABASE: sq
+          - PARALLEL_TASK: rails-erd
             LENGTH: long
-            PARALLEL_TASK: rails-erd
+            DATABASE: sq
           # pg, long
-          - DATABASE: pg
+          - PARALLEL_TASK: test-log
             LENGTH: long
-            PARALLEL_TASK: test-log
-          - DATABASE: pg
+            DATABASE: pg
+          - PARALLEL_TASK: cop
             LENGTH: long
-            PARALLEL_TASK: cop
-          - DATABASE: pg
+            DATABASE: pg
+          - PARALLEL_TASK: rbp
             LENGTH: long
-            PARALLEL_TASK: rbp
+            DATABASE: pg
 
     env:
       DATABASE_CI: ${{ matrix.DATABASE }}
