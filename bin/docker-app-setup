@@ -28,7 +28,7 @@ fi
 
 cd "$DIR_APP_DB" && docker/create_dockerfile
 
-cd "$DIR_APP_DB" && docker/compose_up
+cd "$DIR_APP_DB" && docker/compose_build
 
 cd "$DIR_APP_DB" && docker/bundle_install
 
