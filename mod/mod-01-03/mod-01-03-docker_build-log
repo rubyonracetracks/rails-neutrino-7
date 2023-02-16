@@ -19,7 +19,7 @@ set -eo pipefail
 # END: PostgreSQL setup
 
 docker/create_dockerfile
-docker/compose_up
+docker/compose_build
 
 #GEM_INSTALL_BUNDLER docker/gem_install_bundler
 
