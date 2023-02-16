@@ -21,7 +21,7 @@ then
   cd "$DIR_APP_TEST_FULL" && docker/pg_setup_2 'rails_app' 'jbond007' 'BondJamesBond'
 fi
 cd "$DIR_APP_TEST_FULL" && docker/create_dockerfile
-cd "$DIR_APP_TEST_FULL" && docker/compose_up
+cd "$DIR_APP_TEST_FULL" && docker/compose_build
 cd "$DIR_APP_TEST_FULL" && docker/bundle_install
 if [[ "$DIR_APP_TEST_FULL" =~ 'postgres' ]]
 then
