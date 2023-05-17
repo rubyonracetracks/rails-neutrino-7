@@ -18,6 +18,6 @@ puts 'Updating the Gemfile'
 InsertFromFile.add_end('mod-01-06-Gemfile.txt', 'Gemfile')
 puts 'bundle update --quiet'
 system('bundle update --quiet', exception: true)
-StringInFile.replace("gem 'sassc'", GemfileEntry.active('dartsass-rails').to_s, 'Gemfile')
+StringInFile.replace("gem 'dartsass-rails'", GemfileEntry.active('dartsass-rails').to_s, 'Gemfile')
 puts 'bundle install --quiet'
 system('bundle install --quiet', exception: true)
