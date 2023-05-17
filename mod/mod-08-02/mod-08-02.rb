@@ -6,15 +6,6 @@ require 'gemfile_entry'
 require 'insert_from_file'
 require 'line_containing'
 
-# WICHTIG: Add the sassc gem to the Gemfile
-puts 'Updating the Gemfile'
-InsertFromFile.add_end('mod-08-02-Gemfile.txt', 'Gemfile')
-puts 'bundle update --quiet'
-system('bundle update --quiet', exception: true)
-StringInFile.replace("gem 'sassc'", GemfileEntry.active('sassc').to_s, 'Gemfile')
-puts 'bundle install --quiet'
-system('bundle install --quiet', exception: true)
-
 puts 'Generating static pages'
 system('bin/rails generate controller StaticPages home about contact', exception: true)
 sleep 0.01
