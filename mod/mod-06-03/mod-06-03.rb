@@ -12,5 +12,6 @@ puts 'bundle install --quiet'
 system('bundle install --quiet', exception: true)
 StringInFile.replace("gem 'better_errors'", GemfileEntry.active('better_errors').to_s, 'Gemfile')
 StringInFile.replace("gem 'binding_of_caller'", GemfileEntry.active('binding_of_caller').to_s, 'Gemfile')
+StringInFile.replace("gem 'sassc'", GemfileEntry.active('sassc').to_s, 'Gemfile')
 puts 'bundle install --quiet'
 system('bundle install --quiet', exception: true)

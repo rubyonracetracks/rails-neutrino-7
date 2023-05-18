@@ -1,8 +1,11 @@
 
 # BEGIN: Better Errors and Binding of Caller
 # better_errors: Provides more and better information in error pages
+# sassc: As of 5-17-2023, having better_errors without sassc results in
+# error messages when running database migrations or the rails generate command.
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'sassc'
 end
 # END: Better Errors and Binding of Caller
