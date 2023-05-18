@@ -1,4 +1,0 @@
-
-# BEGIN: needed for database migrations and bin/rails generate commands
-gem 'dartsass-rails', require: false, group: :development
-# END: needed for database migrations and bin/rails generate commands
