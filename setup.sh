@@ -49,7 +49,7 @@ echo 'To continue, press Enter.'
 read
 echo ''
 
-source bin/definitions
+TIME_STAMP=`date -u +%Y-%m%d-%H%M%S`
 
 TYPE='ed25519'
 FILENAME="id_$TYPE"
